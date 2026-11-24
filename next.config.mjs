@@ -22,9 +22,16 @@ const nextConfig = {
      browser serves them from cache instead of re-downloading on every visit.
      Note: these filenames are fixed, so if you ever swap an asset, rename it (or
      hard-refresh) to bust the cache. */
-  /* The Gallery page was replaced by Partners & Testimonials. */
+  /* The Gallery page was replaced by Partners & Testimonials. The "-2" links
+     are from the design preview, which now lives at the normal URLs. */
   async redirects() {
-    return [{ source: "/gallery", destination: "/partners", permanent: true }];
+    const preview = ["about-us", "products", "services", "industries-served", "app", "career", "partners", "contact-us", "blog"];
+    return [
+      { source: "/gallery", destination: "/partners", permanent: true },
+      { source: "/home-2", destination: "/", permanent: false },
+      ...preview.map((r) => ({ source: `/${r}-2`, destination: `/${r}`, permanent: false })),
+      { source: "/blog-2/:slug", destination: "/blog/:slug", permanent: false },
+    ];
   },
   async headers() {
     return [

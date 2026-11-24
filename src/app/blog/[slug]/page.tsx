@@ -2,23 +2,21 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, ChevronRight, Plus } from "lucide-react";
-import Navbar from "@/components/sections/Navbar";
-import Footer from "@/components/sections/Footer";
-import Container from "@/components/ui/Container";
-import Prose, { Inline } from "@/components/blog/Prose";
-import PostCard, { PostMeta, formatDate } from "@/components/blog/PostCard";
-import {
-  blogAuthor,
-  getPost,
-  plain,
-  posts,
-  relatedPosts,
-  slugify,
-} from "@/lib/blog";
+import { ArrowRight, Plus } from "lucide-react";
+import Shell from "@/components/home2/Shell";
+import ContactBand from "@/components/home2/ContactBand";
+import { Label, SplitHeading } from "@/components/home2/blocks";
+import { Fade, Grow } from "@/components/home2/primitives";
+import { R, WRAP, v2Meta } from "@/components/home2/shared";
+import BlogCard from "@/components/home2/blog/BlogCard";
+import Prose, { Inline } from "@/components/home2/blog/Prose";
+import { PostMeta, formatDate } from "@/components/home2/blog/meta";
+import { blogAuthor, getPost, plain, posts, relatedPosts, slugify } from "@/lib/blog";
 import { siteConfig } from "@/lib/site";
 
 const ORIGIN = "https://www.accordchemicals.com";
+const FAQ_LABEL = "Frequently asked questions";
+const two = (n: number) => String(n).padStart(2, "0");
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -26,42 +24,40 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = getPost(params.slug);
-  if (!post) return {};
-  const url = `/blog/${post.slug}`;
+  if (!post) return v2Meta("Blog");
   return {
-    title: post.title,
-    description: post.description,
+    ...v2Meta(post.title, post.description),
     keywords: post.tags,
-    alternates: { canonical: url },
+    /* The live article is the canonical copy of this preview. */
+    alternates: { canonical: `/blog/${post.slug}` },
     authors: [{ name: blogAuthor.name }],
     openGraph: {
       title: post.title,
       description: post.description,
       type: "article",
-      url,
+      url: `/blog/${post.slug}`,
       publishedTime: post.published,
       modifiedTime: post.updated,
       section: post.category,
       tags: post.tags,
       images: [{ url: post.cover.src, width: 1600, height: 900, alt: post.cover.alt }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-      images: [post.cover.src],
-    },
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default function BlogTwoPostPage({ params }: { params: { slug: string } }) {
   const post = getPost(params.slug);
   if (!post) notFound();
 
   const toc = post.body.filter((b) => b.type === "h2").map((b) => (b as { text: string }).text);
+  const tocItems = [
+    ...toc.map((h, i) => ({ n: two(i + 1), label: h, id: slugify(h) })),
+    { n: two(toc.length + 1), label: FAQ_LABEL, id: "faq" },
+  ];
   const related = relatedPosts(post.slug);
   const url = `${ORIGIN}/blog/${post.slug}`;
 
+  /* Same structured data as the live article (canonical live URLs). */
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -76,11 +72,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       keywords: post.tags.join(", "),
       articleSection: post.category,
       mainEntityOfPage: { "@type": "WebPage", "@id": url },
-      author: {
-        "@type": "Organization",
-        name: `${siteConfig.name}: ${blogAuthor.name}`,
-        url: ORIGIN,
-      },
+      author: { "@type": "Organization", name: `${siteConfig.name}: ${blogAuthor.name}`, url: ORIGIN },
       publisher: {
         "@type": "Organization",
         name: siteConfig.name,
@@ -109,158 +101,224 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   ];
 
   return (
-    <>
-      <Navbar />
-      <main className="pt-24 sm:pt-28">
-        <article>
-          {/* Header */}
-          <Container className="max-w-[1120px]">
-            <div className="max-w-[820px]">
-            <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-[13px] text-steel-400">
-              <Link href="/" className="hover:text-white">Home</Link>
-              <ChevronRight className="h-3.5 w-3.5" />
-              <Link href="/blog" className="hover:text-white">Blog</Link>
-            </nav>
-            <PostMeta post={post} />
-            <h1 className="mt-4 font-display text-[2rem] font-semibold leading-[1.15] tracking-[-0.02em] text-white text-balance sm:text-[2.6rem]">
+    <Shell>
+      <article>
+        {/* Header */}
+        <header className={`${WRAP} pb-10 pt-6 lg:pb-14 lg:pt-8`}>
+          <nav aria-label="Breadcrumb" className="text-[12px] text-[#8A8A8A]">
+            <Link href={R.home} className="transition-colors hover:text-[#0A0A0A]">
+              Home
+            </Link>
+            <span aria-hidden className="mx-2 text-[#C8C8C8]">
+              /
+            </span>
+            <Link href={R.blog} className="transition-colors hover:text-[#0A0A0A]">
+              Blog
+            </Link>
+            <span aria-hidden className="mx-2 text-[#C8C8C8]">
+              /
+            </span>
+            <span aria-current="page" className="text-[#0A0A0A]">
+              {post.category}
+            </span>
+          </nav>
+
+          <Fade className="mt-10 lg:mt-14">
+            <PostMeta post={post} className="text-[#6B6B6B]" />
+            <h1 className="mt-5 max-w-[22ch] font-sans text-[clamp(2rem,4.4vw,4rem)] font-medium leading-[1.04] tracking-[-0.035em] text-[#0A0A0A]">
               {post.title}
             </h1>
-            <p className="mt-5 text-lg leading-relaxed text-steel-300">{post.description}</p>
-            <p className="mt-5 text-sm text-steel-400">
-              By <span className="font-medium text-steel-200">{blogAuthor.name}</span>, {blogAuthor.role}
+          </Fade>
+          <Fade delay={0.15} className="mt-8 grid gap-6 lg:grid-cols-12 lg:gap-8">
+            <p className="max-w-2xl text-[17px] leading-relaxed text-[#5E5E5E] lg:col-span-7">{post.description}</p>
+            <p className="text-[13px] leading-relaxed text-[#8A8A8A] lg:col-span-4 lg:col-start-9 lg:self-end">
+              By <span className="font-medium text-[#0A0A0A]">{blogAuthor.name}</span>, {blogAuthor.role}
               {post.updated !== post.published && <> · Updated {formatDate(post.updated)}</>}
             </p>
-            </div>
-          </Container>
+          </Fade>
+        </header>
 
-          <Container className="mt-8 max-w-[1120px] sm:mt-10">
-            <div className="relative aspect-[16/9] overflow-hidden rounded-3xl bg-ink-900">
-              <Image
-                src={post.cover.src}
-                alt={post.cover.alt}
-                fill
-                priority
-                sizes="(min-width: 1120px) 1120px, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </Container>
+        {/* Cover */}
+        <div className={WRAP}>
+          <div className="relative aspect-[16/10] overflow-hidden bg-[#D9D9D9] sm:aspect-[16/9] lg:aspect-[21/9]">
+            <Image
+              src={post.cover.src}
+              alt={post.cover.alt}
+              fill
+              priority
+              sizes="(min-width: 1440px) 1344px, 100vw"
+              className="object-cover grayscale contrast-[1.1]"
+            />
+            <Grow
+              axis="x"
+              origin="left"
+              delay={0.2}
+              duration={1.2}
+              className="absolute bottom-0 left-0 h-[20%] max-h-[120px] w-[38%]"
+              fill="bg-accord-red mix-blend-multiply"
+            />
+          </div>
+        </div>
 
-          {/* Body + sidebar */}
-          <Container className="mt-10 max-w-[1120px] sm:mt-14">
-            <div className="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_260px]">
-              <div className="mx-auto w-full max-w-[760px] lg:mx-0">
-                {/* Direct answer: the paragraph answer engines quote. */}
-                <section aria-labelledby="quick-answer" className="rounded-2xl border border-white/10 bg-ink-900 p-6 sm:p-7">
-                  <h2 id="quick-answer" className="text-xs font-semibold uppercase tracking-[0.2em] text-accord-red">
-                    Quick answer
-                  </h2>
-                  <p className="mt-3 text-[17px] leading-[1.75] text-white">{post.answer}</p>
-                </section>
-
-                <section aria-labelledby="takeaways" className="mt-8">
-                  <h2 id="takeaways" className="font-display text-lg font-semibold text-white">
-                    Key takeaways
-                  </h2>
-                  <ul className="mt-4 space-y-3">
-                    {post.takeaways.map((t, i) => (
-                      <li key={i} className="flex gap-3 text-[16px] leading-relaxed text-steel-200">
-                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accord-red" />
-                        <span>
-                          <Inline text={t} />
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-
-                <div className="mt-10">
-                  <Prose blocks={post.body} />
-                </div>
-
-                {/* FAQ */}
-                <section aria-labelledby="faq" className="mt-14">
-                  <h2 id="faq" className="scroll-mt-28 font-display text-2xl font-semibold tracking-[-0.015em] text-white sm:text-[1.75rem]">
-                    Frequently asked questions
-                  </h2>
-                  <div className="mt-5 divide-y divide-white/10 border-y border-white/10">
-                    {post.faqs.map((f, i) => (
-                      <details key={i} className="group py-1" open={i === 0}>
-                        <summary className="flex cursor-pointer list-none items-start justify-between gap-4 py-4 font-display text-[17px] font-semibold text-white [&::-webkit-details-marker]:hidden">
-                          <h3>{f.q}</h3>
-                          <Plus className="mt-0.5 h-5 w-5 shrink-0 text-accord-red transition-transform duration-200 group-open:rotate-45" />
-                        </summary>
-                        <p className="pb-5 pr-9 text-[16px] leading-relaxed text-steel-200">
-                          <Inline text={f.a} />
-                        </p>
-                      </details>
-                    ))}
-                  </div>
-                </section>
-
-                {/* CTA */}
-                <section className="mt-12 flex flex-col gap-5 rounded-3xl bg-accord-red p-7 sm:flex-row sm:items-center sm:justify-between sm:p-9">
-                  <div>
-                    <p className="font-display text-xl font-semibold text-[#fff] sm:text-2xl">Need a quotation?</p>
-                    <p className="mt-1.5 text-[15px] leading-relaxed text-[#fff]/85">
-                      Share product, grade, volume and destination. We reply within one business day.
-                    </p>
-                  </div>
-                  <Link
-                    href="/contact-us"
-                    className="inline-flex shrink-0 items-center gap-2 self-start rounded-xl bg-[#fff] px-5 py-3 text-sm font-semibold text-accord-red transition-opacity hover:opacity-90 sm:self-auto"
-                  >
-                    Request a quote <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </section>
-              </div>
-
-              {/* Sticky table of contents (desktop) */}
-              <aside className="hidden lg:block">
-                <div className="sticky top-28">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-steel-400">On this page</p>
-                  <ol className="mt-4 space-y-2.5 border-l border-white/10">
-                    {[...toc, "Frequently asked questions"].map((h) => (
-                      <li key={h}>
-                        <a
-                          href={`#${h === "Frequently asked questions" ? "faq" : slugify(h)}`}
-                          className="-ml-px block border-l border-transparent pl-4 text-[14px] leading-snug text-steel-300 transition-colors hover:border-accord-red hover:text-white"
-                        >
-                          {h}
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </aside>
-            </div>
-          </Container>
-        </article>
-
-        {/* Related */}
-        {related.length > 0 && (
-          <section className="section-quiet mt-10">
-            <Container>
-              <div className="flex items-end justify-between gap-4">
-                <h2 className="font-display text-2xl font-semibold tracking-[-0.015em] text-white">Keep reading</h2>
-                <Link href="/blog" className="text-sm font-medium text-steel-300 hover:text-accord-red">
-                  All articles
+        {/* Body */}
+        <div className={`${WRAP} mt-12 grid gap-12 pb-16 lg:mt-16 lg:grid-cols-12 lg:gap-8 lg:pb-24`}>
+          {/* Sticky contents (desktop) */}
+          <aside className="hidden lg:col-span-3 lg:block">
+            <div className="sticky top-28">
+              <Label>On this page</Label>
+              <ol className="mt-4 border-t border-[#E6E6E6]">
+                {tocItems.map((t) => (
+                  <li key={t.id} className="border-b border-[#E6E6E6]">
+                    <a
+                      href={`#${t.id}`}
+                      className="group grid grid-cols-[2rem_1fr] gap-2 py-3 text-[13px] leading-snug text-[#5E5E5E] transition-colors hover:text-[#0A0A0A]"
+                    >
+                      <span className="font-light tabular-nums text-accord-red">{t.n}</span>
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">{t.label}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-8 bg-[#0A0A0A] p-6 text-[#fff]">
+                <p className="font-sans text-[17px] font-medium leading-snug">Need a quotation?</p>
+                <p className="mt-2 text-[13px] leading-relaxed text-[#fff]/70">
+                  Share product, grade, volume and destination.
+                </p>
+                <Link
+                  href={R.contact}
+                  className="group mt-5 inline-flex items-center gap-2 text-[13px] font-medium text-[#fff]"
+                >
+                  Request a quote
+                  <ArrowRight className="h-4 w-4 text-accord-red transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
-              <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {related.map((p) => (
-                  <PostCard key={p.slug} post={p} />
+            </div>
+          </aside>
+
+          <div className="min-w-0 max-w-[760px] lg:col-span-8 lg:col-start-5">
+            {/* Contents (mobile / tablet) */}
+            <details className="group mb-8 border-y border-[#E6E6E6] lg:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between py-4 [&::-webkit-details-marker]:hidden">
+                <Label>On this page</Label>
+                <Plus className="h-4 w-4 text-accord-red transition-transform duration-200 group-open:rotate-45" />
+              </summary>
+              <ol className="pb-4">
+                {tocItems.map((t) => (
+                  <li key={t.id}>
+                    <a href={`#${t.id}`} className="grid grid-cols-[2rem_1fr] gap-2 py-2 text-[14px] leading-snug text-[#3A3A3A]">
+                      <span className="font-light tabular-nums text-accord-red">{t.n}</span>
+                      <span>{t.label}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </details>
+
+            {/* Direct answer: the paragraph answer engines quote. */}
+            <section aria-labelledby="quick-answer" className="bg-[#0A0A0A] p-7 sm:p-9">
+              <h2
+                id="quick-answer"
+                className="flex items-center gap-3 font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-[#fff]/70"
+              >
+                <span aria-hidden className="h-2.5 w-2.5 bg-accord-red" />
+                Quick answer
+              </h2>
+              <p className="mt-4 text-[18px] leading-[1.7] text-[#fff]">{post.answer}</p>
+            </section>
+
+            <section aria-labelledby="takeaways" className="mt-12">
+              <h2 id="takeaways" className="font-sans text-[20px] font-semibold tracking-[-0.015em] text-[#0A0A0A]">
+                Key takeaways
+              </h2>
+              <ol className="mt-5 border-t border-[#E6E6E6]">
+                {post.takeaways.map((t, i) => (
+                  <li
+                    key={i}
+                    className="grid grid-cols-[2.75rem_1fr] gap-2 border-b border-[#E6E6E6] py-4 text-[16px] leading-relaxed text-[#2B2B2B]"
+                  >
+                    <span className="font-sans text-[22px] font-extralight leading-[1.15] tabular-nums text-accord-red">
+                      {two(i + 1)}
+                    </span>
+                    <span>
+                      <Inline text={t} />
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            <div className="mt-14">
+              <Prose blocks={post.body} />
+            </div>
+
+            {/* FAQ */}
+            <section aria-labelledby="faq" className="mt-16 border-t border-[#0A0A0A] pt-10">
+              <h2
+                id="faq"
+                className="scroll-mt-28 font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-medium leading-[1.15] tracking-[-0.025em] text-[#0A0A0A]"
+              >
+                <span className="mb-3 block text-[13px] font-light tabular-nums tracking-normal text-accord-red">
+                  {two(toc.length + 1)}
+                </span>
+                {FAQ_LABEL}
+              </h2>
+              <div className="mt-6 border-t border-[#E6E6E6]">
+                {post.faqs.map((f, i) => (
+                  <details key={i} className="group border-b border-[#E6E6E6]" open={i === 0}>
+                    <summary className="flex cursor-pointer list-none items-start justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+                      <h3 className="font-sans text-[17px] font-medium leading-snug text-[#0A0A0A]">{f.q}</h3>
+                      <Plus className="mt-0.5 h-5 w-5 shrink-0 text-accord-red transition-transform duration-200 group-open:rotate-45" />
+                    </summary>
+                    <p className="pb-6 pr-10 text-[16px] leading-relaxed text-[#3A3A3A]">
+                      <Inline text={f.a} />
+                    </p>
+                  </details>
                 ))}
               </div>
-            </Container>
-          </section>
-        )}
-      </main>
-      <Footer />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </>
+            </section>
+
+            {/* Quotation prompt (mobile / tablet; desktop has it in the sidebar) */}
+            <section className="mt-12 flex flex-col gap-5 bg-[#0A0A0A] p-7 sm:flex-row sm:items-center sm:justify-between sm:p-9 lg:hidden">
+              <div>
+                <p className="font-sans text-[20px] font-medium text-[#fff]">Need a quotation?</p>
+                <p className="mt-1.5 text-[14px] leading-relaxed text-[#fff]/70">
+                  Share product, grade, volume and destination. We reply within one business day.
+                </p>
+              </div>
+              <Link
+                href={R.contact}
+                className="inline-flex h-12 shrink-0 items-center gap-2 self-start bg-accord-red px-6 text-[14px] font-medium text-[#fff] transition-colors hover:bg-[#fff] hover:text-[#0A0A0A] sm:self-auto"
+              >
+                Request a quote <ArrowRight className="h-4 w-4" />
+              </Link>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      {/* Related */}
+      {related.length > 0 && (
+        <section aria-label="Keep reading" className={`${WRAP} border-t border-[#E6E6E6] py-12 lg:py-20`}>
+          <SplitHeading
+            note="More guides from the trading desk."
+            link={{ href: R.blog, label: "All articles" }}
+            title={[[{ text: "Keep" }, { text: "reading", tone: "red" }]]}
+          />
+          <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+            {related.map((p, i) => (
+              <li key={p.slug} className={i === 2 ? "sm:hidden lg:block" : ""}>
+                <Fade delay={i * 0.06} className="h-full">
+                  <BlogCard post={p} />
+                </Fade>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <ContactBand />
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    </Shell>
   );
 }

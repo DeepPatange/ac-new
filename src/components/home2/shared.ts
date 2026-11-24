@@ -19,25 +19,25 @@ export const portrait = (id: string, w = 900, h = 1200) =>
  * every v2 page links only to other v2 pages. The live pages are untouched.
  */
 export const R = {
-  home: "/home-2",
-  about: "/about-us-2",
-  products: "/products-2",
-  services: "/services-2",
-  industries: "/industries-served-2",
-  app: "/app-2",
-  career: "/career-2",
-  partners: "/partners-2",
-  blog: "/blog-2",
-  contact: "/contact-us-2",
+  home: "/",
+  about: "/about-us",
+  products: "/products",
+  services: "/services",
+  industries: "/industries-served",
+  app: "/app",
+  career: "/career",
+  partners: "/partners",
+  blog: "/blog",
+  contact: "/contact-us",
 } as const;
 
 /** Contact page with the product enquiry pre-filled. */
 export const enquire = (slug: string) => `${R.contact}?product=${slug}`;
 
-/** Metadata for a v2 preview page: titled, and kept out of search. */
+/** Page metadata: titled, and kept out of search while the site is in review. */
 export function v2Meta(title: string, description?: string): Metadata {
   return {
-    title: `${title} (v2 preview)`,
+    title,
     description,
     robots: { index: false, follow: false },
   };
