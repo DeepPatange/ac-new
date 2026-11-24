@@ -1,0 +1,70 @@
+{
+  "producer": {
+    "fx": 59.3,
+    "fy": 57.4
+  },
+  "shipment": {
+    "fx": 66.4,
+    "fy": 67.7
+  },
+  "storage": {
+    "fx": 59.7,
+    "fy": 56.3
+  },
+  "delivery": {
+    "fx": 57.8,
+    "fy": 61.2
+  },
+  "cha": {
+    "fx": 64.2,
+    "fy": 55.3
+  },
+  "jetty": {
+    "fx": 60.7,
+    "fy": 51.5
+  },
+  "rail": {
+    "fx": 56.6,
+    "fy": 63.7
+  },
+  "paints": {
+    "fx": 63.4,
+    "fy": 53.9
+  },
+  "adhesives": {
+    "fx": 67.5,
+    "fy": 53.1
+  },
+  "pharma": {
+    "fx": 67.9,
+    "fy": 55.2
+  },
+  "textiles": {
+    "fx": 65.0,
+    "fy": 57.3
+  },
+  "construction": {
+    "fx": 67.8,
+    "fy": 58.9
+  },
+  "personalcare": {
+    "fx": 73.0,
+    "fy": 48.1
+  },
+  "agro": {
+    "fx": 70.8,
+    "fy": 55.7
+  },
+  "polymers": {
+    "fx": 78.5,
+    "fy": 61.1
+  },
+  "automotive": {
+    "fx": 58.6,
+    "fy": 58.9
+  },
+  "printing": {
+    "fx": 53.0,
+    "fy": 58.9
+  }
+}

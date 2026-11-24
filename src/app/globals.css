@@ -1,0 +1,309 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* NOTE: --font-sans / --font-display / --font-mono are provided by next/font
+     variables on <html> (layout.tsx). Do NOT redefine them here — a :root
+     redefinition points at plain family names that next/font never registers,
+     silently dropping every font to the system fallback. */
+
+  /* LIGHT THEME tokens. Tailwind's white/ink/steel/black are backed by these
+     (see tailwind.config.ts), so the dark-built UI flips to white + near-black
+     + red with no component edits. "white" = the dark FOREGROUND here. */
+  :root {
+    --c-white: 20 20 23; /* text-white / borders / glass fills -> near-black */
+    --c-black: 12 12 14; /* overlays stay dark */
+    --c-ink: 255 255 255; /* bg-ink -> white surfaces */
+    --c-ink-900: 250 250 251;
+    --c-ink-800: 244 244 245;
+    --c-ink-700: 235 235 238;
+    --c-ink-600: 223 223 227;
+    --c-steel-100: 17 17 19; /* highest-emphasis text */
+    --c-steel-200: 28 28 32; /* body text */
+    --c-steel-300: 58 58 66; /* secondary */
+    --c-steel-400: 96 96 106; /* muted */
+    --c-steel-500: 128 128 138; /* faint */
+    --c-steel-600: 160 160 170; /* faintest (mono ticks) */
+  }
+
+  * {
+    @apply border-white/10;
+  }
+
+  html {
+    /* Decorative glows bleed past the edges; never allow sideways scroll. */
+    overflow-x: clip;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-ink text-steel-200 font-sans antialiased;
+    overflow-x: hidden;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  /* Headings share one family and a calm, consistent weight. */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  /* Former mono labels: clean sans with aligned (tabular) figures. */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+  }
+
+  /* Faint red/ember aurora on the near-black base — adds depth without ever
+     lightening the page. Fixed so it stays put while content scrolls. */
+  /* Flat page base — a single uniform ink behind every section (no aurora),
+     matching the Network section's background. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: #ffffff;
+  }
+
+  ::selection {
+    @apply bg-accord-red;
+    color: #fff;
+  }
+
+  /* Brand scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #ececef;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#e11b22, #b3141a);
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  .text-gradient-red {
+    @apply bg-gradient-to-br from-accord-redLight via-accord-red to-accord-redDark bg-clip-text text-transparent;
+  }
+
+  .text-gradient-ember {
+    @apply bg-gradient-to-r from-accord-ember via-accord-red to-accord-redDark bg-clip-text text-transparent;
+  }
+
+  /* ===========================================================================
+     LIGHT surfaces — white cards on a white page: soft fill, hairline dark
+     border, gentle drop shadow (no heavy frosted glass).
+     ========================================================================== */
+
+  /* Chrome: navbar pill, badges, floating buttons. */
+  .glass {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.7),
+      0 14px 40px -20px rgba(0, 0, 0, 0.18);
+  }
+
+  /* Content cards. */
+  .glass-card {
+    @apply rounded-2xl;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.8),
+      0 18px 46px -30px rgba(0, 0, 0, 0.22);
+  }
+
+  /* High-legibility surface for forms / dense text. */
+  .glass-strong {
+    @apply rounded-2xl;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 54px -26px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Back-compat alias used across older sections → same as a content card. */
+  .glass-light {
+    @apply rounded-2xl;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.8),
+      0 18px 46px -30px rgba(0, 0, 0, 0.22);
+  }
+
+  /* Section vertical rhythm — legacy blanket tier (kept for back-compat). */
+  .section {
+    @apply relative py-12 sm:py-16 lg:py-20;
+  }
+
+  /* ==========================================================================
+     Redesign section tiers (brief §4.1) — quiet sections breathe, peaks get
+     their height from the pin, never from padding.
+     ========================================================================= */
+  .section-quiet {
+    @apply relative py-10 sm:py-12 lg:py-14;
+  }
+
+  .section-peak {
+    @apply relative py-0;
+  }
+
+  /* ==========================================================================
+     Typography tiers (brief §3 — names are binding). Space Grotesk carries
+     all display type; Inter stays on body copy.
+     ========================================================================= */
+  .type-hero {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    font-size: clamp(2.5rem, 5.6vw, 4.5rem);
+  }
+
+  .type-section {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    font-size: clamp(1.875rem, 3.4vw, 2.75rem);
+  }
+
+  .type-card {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
+  }
+
+  /* Headline statistics: clean proportional-width figures, semibold. */
+  .type-stat {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  /* ==========================================================================
+     Tonal zones (brief §2) — alternate base temperature per section so the
+     scroll has perceptible shifts. Static gradients only; never animated.
+     ========================================================================= */
+  /* Uniform background: every section reads as the same flat ink as the
+     Network section. The warm/cool tonal tints are intentionally neutralised. */
+  .zone-warm,
+  .zone-cool {
+    background-color: #ffffff;
+    background-image: none;
+  }
+}
+
+/* Anchor jumps clear the fixed navbar (matters for reduced-motion / no-JS) */
+section[id],
+footer[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* WHITE THEME: recolour the Spline scene to a WHITE-dominant palette (white
+   water/ground/ships, red mid-tones, black shadows) so it blends into the white
+   page and the black hero headline reads over it. Mapping lives in the SVG
+   filter #accord-tritone-white (layout.tsx). */
+.spline-tint canvas {
+  filter: url(#accord-tritone-white);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Subtle film grain overlay. Rendered as a small, seamlessly-tiling 120px
+     noise tile (2 octaves) the GPU can repeat cheaply, instead of rasterising a
+     full-section feTurbulence per layer (expensive on scroll across 9 sections). */
+  /* Grain neutralised — the background stays a single flat ink everywhere,
+     matching the Network section (which carries no grain). */
+  .noise::after {
+    content: none;
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  .mask-fade-l {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 44%);
+    mask-image: linear-gradient(to right, transparent 0%, black 44%);
+  }
+}
+
+/* Reduced-motion kill-switch (brief §4.5): CSS loops stop dead; framer is
+   handled by <MotionConfig reducedMotion="user">; pinned scenes render their
+   static fallbacks; arcs render complete. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-pulse-ring,
+  .animate-shimmer,
+  .animate-fade-up {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Lenis recommended baseline */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ============================================================================
+   LIGHT-THEME CONTRAST FIXES
+   The global white->near-black token remap makes text readable on the white
+   page, but it inverts a few elements that are meant to stay LIGHT because they
+   sit on RED (or dark) surfaces — button labels, arrow chips, the footer CTA
+   pill. These rules restore them. Placed last so they win over the utilities.
+   ========================================================================== */
+
+/* Solid brand-red buttons keep a WHITE label + white glyphs. */
+.bg-accord-red {
+  color: #fff !important;
+}
+.bg-accord-red .text-white {
+  color: #fff !important;
+}
+
+/* Arrow chips (white circle, red glyph) inside red buttons stay white. */
+.bg-accord-red .bg-white {
+  background-color: #fff !important;
+}
+
+/* Footer CTA: a solid WHITE pill on the red band — keep it white with a red
+   label; its inner red arrow-chip keeps a white glyph. */
+a.bg-white.text-accord-red {
+  background-color: #fff !important;
+  color: #e11b22 !important;
+}
+a.bg-white.text-accord-red .text-white {
+  color: #fff !important;
+}
