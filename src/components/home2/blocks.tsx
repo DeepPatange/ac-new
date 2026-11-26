@@ -18,7 +18,7 @@ export type Lines = Seg[][];
 
 const TONE: Record<NonNullable<Seg["tone"]>, string> = {
   dark: "",
-  light: "font-extralight text-[#A3A3A3]",
+  light: "font-extralight text-[#888888]",
   red: "text-accord-red",
 };
 
@@ -42,7 +42,7 @@ export function TitleLines({ lines, delay = 0 }: { lines: Lines; delay?: number 
 
 /** Shared class string for big uppercase display headings. */
 export const DISPLAY =
-  "font-sans font-medium uppercase leading-[0.9] tracking-[-0.045em] text-[#0A0A0A]";
+  "font-sans font-medium uppercase leading-[0.9] tracking-[-0.045em] text-[#3C3C3C]";
 
 /* -------------------------------------------------------------------------- */
 /* Page header (inner pages)                                                  */
@@ -76,14 +76,14 @@ export function PageHeader({
   const withImage = Boolean(image);
   return (
     <section className={`${WRAP} pb-12 pt-4 lg:pb-16 lg:pt-6`}>
-      <nav aria-label="Breadcrumb" className="text-[12px] text-[#8A8A8A]">
-        <Link href={R.home} className="transition-colors hover:text-[#0A0A0A]">
+      <nav aria-label="Breadcrumb" className="text-[12px] text-[#888888]">
+        <Link href={R.home} className="transition-colors hover:text-[#3C3C3C]">
           Home
         </Link>
-        <span aria-hidden className="mx-2 text-[#C8C8C8]">
+        <span aria-hidden className="mx-2 text-[#C4C6C5]">
           /
         </span>
-        <span aria-current="page" className="text-[#0A0A0A]">
+        <span aria-current="page" className="text-[#3C3C3C]">
           {crumb}
         </span>
       </nav>
@@ -101,12 +101,12 @@ export function PageHeader({
               <Fade>
                 <Square />
                 {lead && (
-                  <div className="mt-4 text-[15px] font-medium leading-snug text-[#0A0A0A]">{lead}</div>
+                  <div className="mt-4 text-[15px] font-medium leading-snug text-[#3C3C3C]">{lead}</div>
                 )}
               </Fade>
               {note && (
                 <Fade delay={0.1}>
-                  <div className="pt-6 text-[12px] leading-relaxed text-[#8A8A8A]">{note}</div>
+                  <div className="pt-6 text-[12px] leading-relaxed text-[#888888]">{note}</div>
                 </Fade>
               )}
             </div>
@@ -134,7 +134,7 @@ export function PageHeader({
               >
                 {intro && (
                   <div
-                    className={`max-w-xl text-[15px] leading-relaxed text-[#5E5E5E] ${
+                    className={`max-w-xl text-[15px] leading-relaxed text-[#5A5A5A] ${
                       withImage ? "" : "lg:col-span-6"
                     }`}
                   >
@@ -157,7 +157,7 @@ export function PageHeader({
 
         {image && (
           <div className="relative lg:col-span-5">
-            <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#D9D9D9] sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[520px]">
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#D8DAD9] sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[520px]">
               <Image
                 src={photo(image.id)}
                 alt={image.alt}
@@ -219,12 +219,12 @@ export function SplitHeading({
       <Fade className={`lg:col-span-4 ${align === "left" ? "lg:order-2 lg:col-start-9" : ""}`}>
         <Square red={red} />
         {note && (
-          <div className="mt-5 max-w-[320px] text-[14px] font-medium leading-snug text-[#0A0A0A]">{note}</div>
+          <div className="mt-5 max-w-[320px] text-[14px] font-medium leading-snug text-[#3C3C3C]">{note}</div>
         )}
         {link && (
           <Link
             href={link.href}
-            className="mt-3 inline-block text-[12px] text-[#8A8A8A] underline decoration-[#C8C8C8] underline-offset-4 transition-colors hover:text-[#0A0A0A]"
+            className="mt-3 inline-block text-[12px] text-[#888888] underline decoration-[#C4C6C5] underline-offset-4 transition-colors hover:text-[#3C3C3C]"
           >
             {link.label}
           </Link>
@@ -259,9 +259,9 @@ export function ButtonLink({
 }) {
   const cls =
     variant === "solid"
-      ? "bg-[#0A0A0A] text-[#fff] hover:bg-accord-red"
+      ? "bg-accord-red text-[#fff] hover:bg-accord-redDark"
       : variant === "outline"
-        ? "border border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-[#fff]"
+        ? "border border-[#D8DAD9] bg-[#fff] text-[#3C3C3C] hover:border-accord-red hover:text-accord-red"
         : "border border-[#fff] text-[#fff] hover:bg-[#fff] hover:text-accord-red";
   const className = `inline-flex h-12 items-center px-6 text-[14px] font-medium transition-colors ${cls}`;
   return external ? (
@@ -278,7 +278,7 @@ export function ButtonLink({
 /** Small uppercase label used above figures and in ledgers. */
 export function Label({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <p className={`text-[11px] font-medium uppercase tracking-[0.16em] text-[#8A8A8A] ${className}`}>
+    <p className={`text-[11px] font-medium uppercase tracking-[0.16em] text-[#888888] ${className}`}>
       {children}
     </p>
   );

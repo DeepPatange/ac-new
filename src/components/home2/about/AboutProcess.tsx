@@ -15,20 +15,20 @@ export default function AboutProcess() {
       <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
         <Fade className="lg:col-span-4">
           <Square red />
-          <p className="mt-5 text-[12px] font-medium uppercase tracking-[0.16em] text-[#8A8A8A]">
+          <p className="mt-5 text-[12px] font-medium uppercase tracking-[0.16em] text-[#888888]">
             {processCopy.eyebrow}
           </p>
-          <p className="mt-3 max-w-[300px] text-[14px] font-medium leading-snug text-[#0A0A0A]">
+          <p className="mt-3 max-w-[300px] text-[14px] font-medium leading-snug text-[#3C3C3C]">
             Four stages, one accountable desk, from the producer to your facility.
           </p>
         </Fade>
         <h2
           id="about-process"
-          className="font-sans text-[clamp(2.2rem,5vw,5rem)] font-medium uppercase leading-[0.9] tracking-[-0.045em] text-[#0A0A0A] lg:col-span-8 lg:text-right"
+          className="font-sans text-[clamp(2.2rem,5vw,5rem)] font-medium uppercase leading-[0.9] tracking-[-0.045em] text-[#3C3C3C] lg:col-span-8 lg:text-right"
         >
           <MaskLine>From requirement</MaskLine>
           <MaskLine delay={0.08}>
-            <span className="font-extralight text-[#A3A3A3]">to</span>{" "}
+            <span className="font-extralight text-[#888888]">to</span>{" "}
             <span className="text-accord-red">delivery.</span>
           </MaskLine>
         </h2>
@@ -37,7 +37,7 @@ export default function AboutProcess() {
       <ol className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
         {FLOW.map((f, i) => (
           <li key={f.step} className="relative pt-7">
-            <span aria-hidden className="absolute inset-x-0 top-0 h-[2px] bg-[#E6E6E6]" />
+            <span aria-hidden className="absolute inset-x-0 top-0 h-[2px] bg-[#E5E7E6]" />
             <Grow
               axis="x"
               origin="left"
@@ -49,10 +49,10 @@ export default function AboutProcess() {
               <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-accord-red">
                 Step {String(i + 1).padStart(2, "0")}
               </p>
-              <h3 className="mt-4 font-sans text-[clamp(1.1rem,1.5vw,1.35rem)] font-medium uppercase leading-tight tracking-[-0.02em] text-[#0A0A0A]">
+              <h3 className="mt-4 font-sans text-[clamp(1.1rem,1.5vw,1.35rem)] font-medium uppercase leading-tight tracking-[-0.02em] text-[#3C3C3C]">
                 {f.step}
               </h3>
-              <p className="mt-3 max-w-[300px] text-[13px] leading-relaxed text-[#6B6B6B]">{f.note}</p>
+              <p className="mt-3 max-w-[300px] text-[13px] leading-relaxed text-[#5A5A5A]">{f.note}</p>
             </Fade>
           </li>
         ))}

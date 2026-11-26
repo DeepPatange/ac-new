@@ -40,7 +40,7 @@ function RedField() {
 
 export default function Statement() {
   return (
-    <section id="about" className="relative overflow-hidden bg-[#F4F3F0]">
+    <section id="about" className="relative overflow-hidden bg-[#F6F6F6]">
       <div className="grid lg:min-h-[760px] lg:grid-cols-2">
         {/* Photo */}
         <div className="relative h-[380px] sm:h-[460px] lg:h-auto">

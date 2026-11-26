@@ -50,7 +50,7 @@ export default function CareerTwo() {
         <ButtonLink href="#roles">View open roles</ButtonLink>
         <a
           href={careersMailto}
-          className="inline-flex h-12 items-center border border-[#0A0A0A] px-6 text-[14px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#0A0A0A] hover:text-[#fff]"
+          className="inline-flex h-12 items-center border border-[#D8DAD9] bg-[#fff] px-6 text-[14px] font-medium text-[#3C3C3C] transition-colors hover:border-accord-red hover:text-accord-red"
         >
           Send your CV
         </a>

@@ -12,7 +12,7 @@ const STICKY_FIX = "body{overflow-x:clip}";
 /** v2 page frame: header, main (anchor #top), footer. */
 export default function Shell({ children }: { children: ReactNode }) {
   return (
-    <div className="bg-[#fff] text-[#0A0A0A]">
+    <div className="bg-[#fff] text-[#3C3C3C]">
       <style>{STICKY_FIX}</style>
       <Nav />
       <main id="top">{children}</main>

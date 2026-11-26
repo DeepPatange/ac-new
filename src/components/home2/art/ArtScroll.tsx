@@ -136,14 +136,14 @@ function Chapter({
             style={{ opacity: reduced ? 1 : textIn, y: reduced ? 0 : textY }}
           >
             <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-accord-red">
-              {String(i + 1).padStart(2, "0")} <span className="mx-1.5 text-[#C8C8C8]">|</span> {c.kicker}
+              {String(i + 1).padStart(2, "0")} <span className="mx-1.5 text-[#C4C6C5]">|</span> {c.kicker}
             </p>
-            <h3 className="mt-3 font-sans text-[clamp(1.6rem,2.6vw,2.6rem)] font-medium leading-[1.05] tracking-[-0.03em] text-[#0A0A0A]">
+            <h3 className="mt-3 font-sans text-[clamp(1.6rem,2.6vw,2.6rem)] font-medium leading-[1.05] tracking-[-0.03em] text-[#3C3C3C]">
               {c.title}
             </h3>
-            <p className="mt-4 text-[15px] leading-relaxed text-[#4A4A4A]">{c.body}</p>
+            <p className="mt-4 text-[15px] leading-relaxed text-[#3C3C3C]">{c.body}</p>
             {c.chips && c.chips.length > 0 && (
-              <p className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] font-medium text-[#0A0A0A]">
+              <p className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] font-medium text-[#3C3C3C]">
                 {c.chips.map((chip, k) => (
                   <span key={chip} className="inline-flex items-center gap-2">
                     {k > 0 && <span aria-hidden className="h-1 w-1 bg-accord-red" />}
@@ -155,7 +155,7 @@ function Chapter({
             {c.cta && (
               <Link
                 href={c.cta.href}
-                className="mt-6 inline-flex h-11 items-center bg-[#0A0A0A] px-5 text-[14px] font-medium text-[#fff] transition-colors hover:bg-accord-red"
+                className="mt-6 inline-flex h-11 items-center bg-accord-red px-5 text-[14px] font-medium text-[#fff] transition-colors hover:bg-accord-redDark"
               >
                 {c.cta.label}
               </Link>
@@ -241,14 +241,14 @@ export default function ArtScroll({
         {/* Glass chapter control over the artwork: prev / bars / next */}
         <nav
           aria-label={`${ariaLabel} chapters`}
-          className="absolute bottom-4 left-5 z-10 flex items-center gap-1 border border-[#E6E6E6] bg-[#fff] p-1.5 shadow-[0_6px_20px_-12px_rgba(0,0,0,0.35)] sm:left-8 lg:bottom-8 lg:left-[calc(30vw+28px)]"
+          className="absolute bottom-4 left-5 z-10 flex items-center gap-1 border border-[#E0E2E1] bg-[#fff] p-1.5 shadow-[0_6px_20px_-12px_rgba(0,0,0,0.35)] sm:left-8 lg:bottom-8 lg:left-[calc(30vw+28px)]"
         >
           <button
             type="button"
             onClick={() => jump(active - 1)}
             disabled={active === 0}
             aria-label="Previous"
-            className="flex h-9 w-9 items-center justify-center text-[#0A0A0A] transition-colors hover:bg-[#F3F3F3] disabled:opacity-30"
+            className="flex h-9 w-9 items-center justify-center text-[#3C3C3C] transition-colors hover:bg-[#EFF1F0] disabled:opacity-30"
           >
             <ArrowLeft className="h-4 w-4" strokeWidth={1.75} />
           </button>
@@ -265,13 +265,13 @@ export default function ArtScroll({
               >
                 <span
                   className={`block h-[3px] rounded-full transition-all duration-300 ${
-                    i === active ? "w-8 bg-accord-red" : "w-3.5 bg-[#0A0A0A]/25 group-hover:bg-[#0A0A0A]"
+                    i === active ? "w-8 bg-accord-red" : "w-3.5 bg-[#3C3C3C]/25 group-hover:bg-[#3C3C3C]"
                   }`}
                 />
               </button>
             ))}
           </div>
-          <span className="min-w-[46px] text-center text-[12px] font-medium tabular-nums text-[#0A0A0A]">
+          <span className="min-w-[46px] text-center text-[12px] font-medium tabular-nums text-[#3C3C3C]">
             {String(active + 1).padStart(2, "0")}/{String(n).padStart(2, "0")}
           </span>
           <button
@@ -279,7 +279,7 @@ export default function ArtScroll({
             onClick={() => jump(active + 1)}
             disabled={active === n - 1}
             aria-label="Next"
-            className="flex h-9 w-9 items-center justify-center bg-[#0A0A0A] text-[#fff] transition-colors hover:bg-accord-red disabled:opacity-30"
+            className="flex h-9 w-9 items-center justify-center bg-accord-red text-[#fff] transition-colors hover:bg-accord-redDark disabled:opacity-30"
           >
             <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
           </button>

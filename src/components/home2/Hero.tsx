@@ -17,20 +17,20 @@ export default function Hero() {
           <div className="grid max-w-xl grid-cols-2 gap-6">
             <Fade>
               <Square />
-              <p className="mt-4 text-[15px] font-medium leading-snug text-[#0A0A0A]">
+              <p className="mt-4 text-[15px] font-medium leading-snug text-[#3C3C3C]">
                 Trading. Indenting.
                 <br />
                 <span className="text-accord-red">Imports</span> and exports.
               </p>
               <Link
                 href={R.about}
-                className="mt-3 inline-block text-[12px] text-[#8A8A8A] underline decoration-[#C8C8C8] underline-offset-4 transition-colors hover:text-[#0A0A0A]"
+                className="mt-3 inline-block text-[12px] text-[#888888] underline decoration-[#C4C6C5] underline-offset-4 transition-colors hover:text-[#3C3C3C]"
               >
                 More about us
               </Link>
             </Fade>
             <Fade delay={0.1}>
-              <p className="pt-6 text-[12px] leading-relaxed text-[#8A8A8A]">
+              <p className="pt-6 text-[12px] leading-relaxed text-[#888888]">
                 Mumbai headquarters.
                 <br />
                 Producer-direct sourcing.
@@ -41,11 +41,11 @@ export default function Hero() {
           </div>
 
           <div className="mt-10 lg:mt-12">
-            <h1 className="font-sans text-[clamp(2.4rem,6vw,5.75rem)] font-medium uppercase leading-[0.9] tracking-[-0.045em] text-[#0A0A0A]">
+            <h1 className="font-sans text-[clamp(2.4rem,6vw,5.75rem)] font-medium uppercase leading-[0.9] tracking-[-0.045em] text-[#3C3C3C]">
               <MaskLine>Pioneering</MaskLine>
               <MaskLine delay={0.08}>Petrochemical</MaskLine>
               <MaskLine delay={0.16}>
-                <span className="font-extralight text-[#A3A3A3]">Excellence</span>
+                <span className="font-extralight text-[#888888]">Excellence</span>
               </MaskLine>
               <MaskLine delay={0.24}>
                 <span className="text-accord-red">Since 2009</span>
@@ -53,19 +53,19 @@ export default function Hero() {
             </h1>
 
             <Fade delay={0.35} className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-              <p className="max-w-md text-[15px] leading-relaxed text-[#5E5E5E]">
+              <p className="max-w-md text-[15px] leading-relaxed text-[#5A5A5A]">
                 {hero.subtext}
               </p>
               <div className="flex shrink-0 items-center gap-3">
                 <Link
                   href="#contact"
-                  className="inline-flex h-12 items-center bg-[#0A0A0A] px-6 text-[14px] font-medium text-[#fff] transition-colors hover:bg-accord-red"
+                  className="inline-flex h-12 items-center bg-accord-red px-6 text-[14px] font-medium text-[#fff] transition-colors hover:bg-accord-redDark"
                 >
                   Request a quote
                 </Link>
                 <Link
                   href="#products"
-                  className="inline-flex h-12 items-center border border-[#0A0A0A] px-6 text-[14px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#0A0A0A] hover:text-[#fff]"
+                  className="inline-flex h-12 items-center border border-[#D8DAD9] bg-[#fff] px-6 text-[14px] font-medium text-[#3C3C3C] transition-colors hover:border-accord-red hover:text-accord-red"
                 >
                   Products
                 </Link>
@@ -76,7 +76,7 @@ export default function Hero() {
 
         {/* RIGHT */}
         <div className="relative lg:col-span-5">
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#D9D9D9] sm:aspect-[16/11] lg:aspect-auto lg:h-full lg:min-h-[560px]">
+          <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#D8DAD9] sm:aspect-[16/11] lg:aspect-auto lg:h-full lg:min-h-[560px]">
             <Image
               src={photo("1578575437130-527eed3abbec")}
               alt="Container ship berthed beneath gantry cranes at a port terminal"
@@ -106,7 +106,7 @@ export default function Hero() {
             <Link
               href="#contact"
               aria-label="Request a quote"
-              className="group absolute bottom-0 left-0 flex h-16 w-16 items-center justify-center bg-[#0A0A0A] text-[#fff] transition-colors hover:bg-[#fff] hover:text-[#0A0A0A]"
+              className="group absolute bottom-0 left-0 flex h-16 w-16 items-center justify-center bg-accord-red text-[#fff] transition-colors hover:bg-accord-redDark "
             >
               <ArrowUpRight
                 className="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

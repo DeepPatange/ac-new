@@ -41,20 +41,20 @@ export default function ContactUsTwoPage() {
         }}
         figure={{ value: "1 day", label: "Quotation turnaround" }}
       >
-        <a href={contact.phoneHref} className={`${actionCls} bg-[#0A0A0A] text-[#fff] hover:bg-accord-red`}>
+        <a href={contact.phoneHref} className={`${actionCls} bg-accord-red text-[#fff] hover:bg-accord-redDark`}>
           Call the desk
         </a>
         <a
           href={contact.whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className={`${actionCls} border border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-[#fff]`}
+          className={`${actionCls} border border-[#D8DAD9] bg-[#fff] text-[#3C3C3C] hover:border-accord-red hover:text-accord-red`}
         >
           WhatsApp
         </a>
       </PageHeader>
 
-      <section id="enquiry" aria-label="Our desk" className={`${WRAP} border-t border-[#E6E6E6] py-12 lg:py-20`}>
+      <section id="enquiry" aria-label="Our desk" className={`${WRAP} border-t border-[#E0E2E1] py-12 lg:py-20`}>
         <SplitHeading
           note="Share the product, grade, volume and destination. One team handles it from quote to delivery."
           title={[

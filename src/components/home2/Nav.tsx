@@ -73,7 +73,7 @@ export default function Nav() {
     <>
       <header
         className={`sticky top-0 z-40 h-[72px] bg-[#fff]/95 backdrop-blur-md transition-[border-color] duration-300 ${
-          scrolled ? "border-b border-[#E6E6E6]" : "border-b border-transparent"
+          scrolled ? "border-b border-[#E0E2E1]" : "border-b border-transparent"
         }`}
       >
         <div className={`${WRAP} flex h-full items-center justify-between gap-6`}>
@@ -97,8 +97,8 @@ export default function Nav() {
                     <Link
                       href={l.href}
                       aria-current={active ? "page" : undefined}
-                      className={`relative text-[13px] transition-colors hover:text-[#0A0A0A] ${
-                        active ? "font-medium text-[#0A0A0A]" : "text-[#5E5E5E]"
+                      className={`relative text-[13px] transition-colors hover:text-[#3C3C3C] ${
+                        active ? "font-medium text-[#3C3C3C]" : "text-[#5A5A5A]"
                       }`}
                     >
                       {l.label}
@@ -113,7 +113,7 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             <Link
               href={R.contact}
-              className="hidden h-10 items-center border border-[#0A0A0A] px-5 text-[13px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#0A0A0A] hover:text-[#fff] sm:inline-flex"
+              className="hidden h-10 items-center bg-accord-red px-5 text-[13px] font-medium text-[#fff] transition-colors hover:bg-accord-redDark sm:inline-flex"
             >
               Request a quote
             </Link>
@@ -122,12 +122,12 @@ export default function Nav() {
               onClick={() => setOpen(true)}
               aria-expanded={open}
               aria-controls="v2-menu"
-              className="flex h-10 items-center gap-2 px-1 text-[13px] font-medium text-[#0A0A0A] xl:hidden"
+              className="flex h-10 items-center gap-2 px-1 text-[13px] font-medium text-[#3C3C3C] xl:hidden"
             >
               Menu
               <span aria-hidden className="flex flex-col gap-[5px]">
-                <span className="block h-px w-5 bg-[#0A0A0A]" />
-                <span className="block h-px w-5 bg-[#0A0A0A]" />
+                <span className="block h-px w-5 bg-[#3C3C3C]" />
+                <span className="block h-px w-5 bg-[#3C3C3C]" />
               </span>
             </button>
           </div>
@@ -149,17 +149,17 @@ export default function Nav() {
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="h-10 px-1 text-[13px] font-medium text-[#0A0A0A]"
+            className="h-10 px-1 text-[13px] font-medium text-[#3C3C3C]"
           >
             Close
           </button>
         </div>
         <nav aria-label="Menu" className={`${WRAP} flex-1 overflow-y-auto pt-4`}>
-          <ol className="border-t border-[#E6E6E6]">
+          <ol className="border-t border-[#E0E2E1]">
             {MENU.map((l, i) => {
               const active = isActive(l.href);
               return (
-                <li key={l.href} className="border-b border-[#E6E6E6]">
+                <li key={l.href} className="border-b border-[#E0E2E1]">
                   <Link
                     href={l.href}
                     onClick={close}
@@ -171,7 +171,7 @@ export default function Nav() {
                     </span>
                     <span
                       className={`font-sans text-[26px] font-medium uppercase leading-none tracking-[-0.03em] ${
-                        active ? "text-accord-red" : "text-[#0A0A0A]"
+                        active ? "text-accord-red" : "text-[#3C3C3C]"
                       }`}
                     >
                       {l.label}
@@ -182,7 +182,7 @@ export default function Nav() {
             })}
           </ol>
         </nav>
-        <div className={`${WRAP} pb-8 pt-6 text-[13px] text-[#6B6B6B]`}>
+        <div className={`${WRAP} pb-8 pt-6 text-[13px] text-[#6D6D6D]`}>
           <a href={siteConfig.contact.phoneHref} className="block">
             {siteConfig.contact.phone}
           </a>

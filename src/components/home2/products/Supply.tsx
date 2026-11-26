@@ -26,9 +26,9 @@ const SUPPLY = [
 
 export default function Supply() {
   return (
-    <section aria-labelledby="supply-heading" className="bg-[#F3F3F3]">
+    <section aria-labelledby="supply-heading" className="bg-[#EFF1F0]">
       <div className={`${WRAP} grid gap-10 py-16 lg:grid-cols-12 lg:gap-12 lg:py-24`}>
-        <div className="relative min-h-[340px] overflow-hidden bg-[#D9D9D9] sm:min-h-[420px] lg:col-span-5 lg:min-h-[560px]">
+        <div className="relative min-h-[340px] overflow-hidden bg-[#D8DAD9] sm:min-h-[420px] lg:col-span-5 lg:min-h-[560px]">
           <Image
             src={photo(PHOTOS.portAerial)}
             alt="Aerial view of a container port terminal with gantry cranes"
@@ -61,18 +61,18 @@ export default function Supply() {
             />
           </h2>
 
-          <dl className="mt-10 grid border-t border-[#D6D6D6] sm:grid-cols-2">
+          <dl className="mt-10 grid border-t border-[#D8DAD9] sm:grid-cols-2">
             {SUPPLY.map((s, i) => (
               <Fade
                 key={s.title}
                 delay={i * 0.06}
-                className={`border-b border-[#D6D6D6] py-6 sm:pr-8 ${i % 2 === 1 ? "sm:border-l sm:pl-8" : ""}`}
+                className={`border-b border-[#D8DAD9] py-6 sm:pr-8 ${i % 2 === 1 ? "sm:border-l sm:pl-8" : ""}`}
               >
                 <span className="font-sans text-[28px] font-extralight leading-none tracking-[-0.03em] tabular-nums text-accord-red">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <dt className="mt-4 text-[16px] font-medium text-[#0A0A0A]">{s.title}</dt>
-                <dd className="mt-2 text-[13px] leading-relaxed text-[#6B6B6B]">{s.desc}</dd>
+                <dt className="mt-4 text-[16px] font-medium text-[#3C3C3C]">{s.title}</dt>
+                <dd className="mt-2 text-[13px] leading-relaxed text-[#5A5A5A]">{s.desc}</dd>
               </Fade>
             ))}
           </dl>

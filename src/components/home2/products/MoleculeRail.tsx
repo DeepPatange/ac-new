@@ -18,14 +18,14 @@ const RAIL = [
 export default function MoleculeRail() {
   return (
     <section className={`${WRAP} pb-6`}>
-      <div className="border-t border-[#E6E6E6] pt-5">
+      <div className="border-t border-[#E0E2E1] pt-5">
         <Label>Illustrative molecular renders</Label>
       </div>
       <ul aria-hidden className="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-6 sm:gap-3 lg:mt-12">
         {RAIL.map(({ src, lift }, i) => (
           <li key={src} className={lift}>
             <Fade delay={i * 0.05}>
-              <div className="group relative aspect-square overflow-hidden bg-[#F3F3F3]">
+              <div className="group relative aspect-square overflow-hidden bg-[#EFF1F0]">
                 <Image
                   src={src}
                   alt=""

@@ -10,7 +10,7 @@ export default function Intro() {
   return (
     <section aria-labelledby="svc-intro-heading" className={`${WRAP} py-12 lg:py-20`}>
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-        <div className="relative min-h-[340px] overflow-hidden bg-[#D9D9D9] sm:min-h-[440px] lg:col-span-5 lg:min-h-[600px]">
+        <div className="relative min-h-[340px] overflow-hidden bg-[#D8DAD9] sm:min-h-[440px] lg:col-span-5 lg:min-h-[600px]">
           <Image
             src={photo(PHOTOS.portAerial)}
             alt="Imported chemical containers staged at a port terminal"
@@ -43,7 +43,7 @@ export default function Intro() {
           </h2>
           <Fade delay={0.15} className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-8">
             {INTRO.map((p) => (
-              <p key={p.slice(0, 24)} className="text-[15px] leading-relaxed text-[#5E5E5E]">
+              <p key={p.slice(0, 24)} className="text-[15px] leading-relaxed text-[#5A5A5A]">
                 {p}
               </p>
             ))}
@@ -51,18 +51,18 @@ export default function Intro() {
 
           <Fade delay={0.25} className="mt-10">
             <Label>Storage & discharge ports</Label>
-            <ol className="mt-4 grid grid-cols-2 border-t border-[#E6E6E6]">
+            <ol className="mt-4 grid grid-cols-2 border-t border-[#E0E2E1]">
               {STORAGE_PORTS.map((port, i) => (
                 <li
                   key={port}
-                  className={`flex items-baseline gap-3 border-b border-[#E6E6E6] py-3.5 ${
+                  className={`flex items-baseline gap-3 border-b border-[#E0E2E1] py-3.5 ${
                     i % 2 === 1 ? "border-l pl-4 sm:pl-6" : "pr-4"
                   }`}
                 >
                   <span className="text-[12px] font-medium tabular-nums text-accord-red">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-[15px] font-medium text-[#0A0A0A]">{port}</span>
+                  <span className="text-[15px] font-medium text-[#3C3C3C]">{port}</span>
                 </li>
               ))}
             </ol>

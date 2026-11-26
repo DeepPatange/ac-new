@@ -14,12 +14,12 @@ function Heading({ kicker, lines }: { kicker: string; lines: [string, string, st
   const [a, b, c] = lines;
   return (
     <div className="grid gap-4 lg:grid-cols-12 lg:items-end">
-      <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-[#8A8A8A] lg:col-span-4">
+      <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-[#888888] lg:col-span-4">
         <span className="mr-2 inline-block h-2 w-2 bg-accord-red align-middle" />
         {kicker}
       </p>
-      <h2 className="font-sans text-[clamp(2.2rem,5.4vw,5rem)] font-medium uppercase leading-[0.92] tracking-[-0.045em] text-[#0A0A0A] lg:col-span-8 lg:text-right">
-        {a} <span className="font-extralight text-[#A3A3A3]">{b}</span>
+      <h2 className="font-sans text-[clamp(2.2rem,5.4vw,5rem)] font-medium uppercase leading-[0.92] tracking-[-0.045em] text-[#3C3C3C] lg:col-span-8 lg:text-right">
+        {a} <span className="font-extralight text-[#888888]">{b}</span>
         {c ? (
           <>
             {" "}

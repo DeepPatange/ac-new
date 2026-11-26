@@ -75,7 +75,7 @@ export default function BlogTwoPage() {
         )}
       </section>
 
-      <section aria-label="All guides" className={`${WRAP} border-t border-[#E6E6E6] py-12 lg:py-20`}>
+      <section aria-label="All guides" className={`${WRAP} border-t border-[#E0E2E1] py-12 lg:py-20`}>
         <SplitHeading
           note="Importing, indenting, quality documents and the molecules we trade, written by the team that moves them every day."
           title={[[{ text: "All" }, { text: "guides", tone: "red" }]]}

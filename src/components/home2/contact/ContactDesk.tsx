@@ -53,9 +53,9 @@ function ProductParam({ onSlug }: { onSlug: (slug: string) => void }) {
 }
 
 const input =
-  "w-full border border-[#D6D6D6] bg-[#fff] px-4 py-3 text-[15px] text-[#0A0A0A] placeholder:text-[#A3A3A3] transition-colors duration-200 hover:border-[#9A9A9A] focus:border-[#0A0A0A] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#0A0A0A] aria-[invalid=true]:border-accord-red aria-[invalid=true]:ring-1 aria-[invalid=true]:ring-accord-red";
+  "w-full border border-[#D8DAD9] bg-[#fff] px-4 py-3 text-[15px] text-[#3C3C3C] placeholder:text-[#888888] transition-colors duration-200 hover:border-[#888888] focus:border-accord-red focus:outline-none focus-visible:ring-1 focus-visible:ring-[#3C3C3C] aria-[invalid=true]:border-accord-red aria-[invalid=true]:ring-1 aria-[invalid=true]:ring-accord-red";
 
-const label = "mb-2 block text-[11px] font-medium uppercase tracking-[0.14em] text-[#5E5E5E]";
+const label = "mb-2 block text-[11px] font-medium uppercase tracking-[0.14em] text-[#5A5A5A]";
 
 function Req() {
   return (
@@ -154,15 +154,15 @@ export default function ContactDesk() {
       <div className="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-8">
         {/* LEFT: direct lines + office */}
         <Fade className="lg:col-span-5">
-          <dl className="border-t border-[#0A0A0A]">
+          <dl className="border-t border-[#3C3C3C]">
             {lines.map((l) => (
-              <div key={l.label} className="grid grid-cols-[96px_1fr] items-baseline gap-4 border-b border-[#E6E6E6] py-5 sm:grid-cols-[120px_1fr]">
-                <dt className="text-[11px] font-medium uppercase tracking-[0.16em] text-[#8A8A8A]">{l.label}</dt>
+              <div key={l.label} className="grid grid-cols-[96px_1fr] items-baseline gap-4 border-b border-[#E0E2E1] py-5 sm:grid-cols-[120px_1fr]">
+                <dt className="text-[11px] font-medium uppercase tracking-[0.16em] text-[#888888]">{l.label}</dt>
                 <dd className="min-w-0">
                   <a
                     href={l.href}
                     {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="group inline-flex max-w-full items-center gap-2 font-sans text-[clamp(1rem,1.8vw,1.45rem)] font-medium [overflow-wrap:anywhere] tracking-[-0.02em] text-[#0A0A0A] transition-colors hover:text-accord-red"
+                    className="group inline-flex max-w-full items-center gap-2 font-sans text-[clamp(1rem,1.8vw,1.45rem)] font-medium [overflow-wrap:anywhere] tracking-[-0.02em] text-[#3C3C3C] transition-colors hover:text-accord-red"
                   >
                     {l.value}
                     <ArrowUpRight
@@ -173,10 +173,10 @@ export default function ContactDesk() {
                 </dd>
               </div>
             ))}
-            <div className="grid grid-cols-[96px_1fr] items-baseline gap-4 border-b border-[#E6E6E6] py-5 sm:grid-cols-[120px_1fr]">
-              <dt className="text-[11px] font-medium uppercase tracking-[0.16em] text-[#8A8A8A]">Office</dt>
+            <div className="grid grid-cols-[96px_1fr] items-baseline gap-4 border-b border-[#E0E2E1] py-5 sm:grid-cols-[120px_1fr]">
+              <dt className="text-[11px] font-medium uppercase tracking-[0.16em] text-[#888888]">Office</dt>
               <dd>
-                <address className="text-[15px] not-italic leading-relaxed text-[#2B2B2B]">
+                <address className="text-[15px] not-italic leading-relaxed text-[#3C3C3C]">
                   {contact.addressLines.map((line) => (
                     <span key={line} className="block">
                       {line}
@@ -193,7 +193,7 @@ export default function ContactDesk() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open our Mumbai office (${contact.addressLines[0].replace(/,\s*$/, "")}) in Google Maps`}
-            className="group mt-8 block bg-[#F3F3F3] transition-colors duration-300 hover:bg-[#ECECEC]"
+            className="group mt-8 block bg-[#EFF1F0] transition-colors duration-300 hover:bg-[#E5E7E6]"
           >
             <div className="relative w-full" style={{ aspectRatio: String(mapPoints.aspect ?? 1.98) }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -201,13 +201,13 @@ export default function ContactDesk() {
               <span className="absolute" style={{ left: `${mapPoints.hq.x}%`, top: `${mapPoints.hq.y}%` }}>
                 <span className="absolute -left-[11px] -top-[11px] h-[22px] w-[22px] rounded-full bg-accord-red/15" />
                 <span className="absolute -left-[5px] -top-[5px] h-2.5 w-2.5 rounded-full bg-accord-red" />
-                <span className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#0A0A0A] px-2 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-[#fff]">
+                <span className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#3C3C3C] px-2 py-1 text-[10px] font-medium uppercase tracking-[0.14em] text-[#fff]">
                   Mumbai HQ
                 </span>
               </span>
             </div>
-            <div className="flex items-center justify-between border-t border-[#E0E0E0] px-5 py-4">
-              <span className="text-[13px] font-medium text-[#0A0A0A]">Open in Google Maps</span>
+            <div className="flex items-center justify-between border-t border-[#E0E2E1] px-5 py-4">
+              <span className="text-[13px] font-medium text-[#3C3C3C]">Open in Google Maps</span>
               <ArrowUpRight
                 aria-hidden
                 className="h-4 w-4 text-accord-red transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -218,12 +218,12 @@ export default function ContactDesk() {
 
         {/* RIGHT: enquiry form */}
         <Fade delay={0.1} className="lg:col-span-7">
-          <div className="bg-[#F3F3F3] p-6 sm:p-10">
+          <div className="bg-[#EFF1F0] p-6 sm:p-10">
             <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <h3 className="font-sans text-[clamp(1.4rem,2.2vw,1.9rem)] font-medium tracking-[-0.025em] text-[#0A0A0A]">
+              <h3 className="font-sans text-[clamp(1.4rem,2.2vw,1.9rem)] font-medium tracking-[-0.025em] text-[#3C3C3C]">
                 Send an enquiry
               </h3>
-              <p className="text-[12px] text-[#6B6B6B]">
+              <p className="text-[12px] text-[#6D6D6D]">
                 Fields marked <span className="text-accord-red">*</span> are required.
               </p>
             </div>
@@ -323,7 +323,7 @@ export default function ContactDesk() {
                   </select>
                   <ChevronDown
                     aria-hidden
-                    className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6B6B6B]"
+                    className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#6D6D6D]"
                   />
                 </div>
               </div>
@@ -349,7 +349,7 @@ export default function ContactDesk() {
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="group mt-2 inline-flex h-14 w-full items-center justify-between bg-[#0A0A0A] px-6 text-[15px] font-medium text-[#fff] transition-colors duration-300 hover:bg-accord-red focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accord-red focus-visible:ring-offset-2 focus-visible:ring-offset-[#F3F3F3] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-[#0A0A0A]"
+                className="group mt-2 inline-flex h-14 w-full items-center justify-between bg-accord-red px-6 text-[15px] font-medium text-[#fff] transition-colors duration-300 hover:bg-accord-redDark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accord-red focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFF1F0] disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:bg-[#3C3C3C]"
               >
                 {status === "submitting" ? (
                   <span className="inline-flex items-center gap-2">
@@ -373,12 +373,12 @@ export default function ContactDesk() {
                   animate={{ opacity: 1, y: 0 }}
                   role="status"
                   aria-live="polite"
-                  className={`flex items-start gap-3 border-l-[3px] bg-[#fff] px-4 py-3 text-[14px] leading-relaxed text-[#0A0A0A] ${
-                    status === "success" ? "border-[#0A0A0A]" : "border-accord-red"
+                  className={`flex items-start gap-3 border-l-[3px] bg-[#fff] px-4 py-3 text-[14px] leading-relaxed text-[#3C3C3C] ${
+                    status === "success" ? "border-[#3C3C3C]" : "border-accord-red"
                   }`}
                 >
                   {status === "success" ? (
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#0A0A0A]" aria-hidden />
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#3C3C3C]" aria-hidden />
                   ) : (
                     <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-accord-red" aria-hidden />
                   )}
@@ -392,7 +392,7 @@ export default function ContactDesk() {
 
       {/* Small print: renders only for confirmed client values */}
       {smallPrint.length > 0 && (
-        <p className="mt-10 border-t border-[#E6E6E6] pt-5 text-[12px] tabular-nums tracking-[0.08em] text-[#6B6B6B]">
+        <p className="mt-10 border-t border-[#E0E2E1] pt-5 text-[12px] tabular-nums tracking-[0.08em] text-[#6D6D6D]">
           {smallPrint.join(" · ")}
         </p>
       )}

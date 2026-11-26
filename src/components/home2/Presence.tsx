@@ -48,25 +48,25 @@ export default function Presence() {
   const lanes = filter === "All" ? (hovered ? [hovered] : []) : shown;
 
   return (
-    <section id="presence" className="bg-[#F3F3F3] py-12 lg:py-20">
+    <section id="presence" className="bg-[#EFF1F0] py-12 lg:py-20">
       <div className={`${WRAP} grid gap-10 lg:grid-cols-12 lg:gap-10`}>
         {/* Left: heading + region filter ledger */}
         <div className="lg:col-span-4">
           <Fade>
             <Square />
-            <p className="mt-5 text-[12px] font-medium uppercase tracking-[0.14em] text-[#8A8A8A]">{presenceCopy.eyebrow}</p>
+            <p className="mt-5 text-[12px] font-medium uppercase tracking-[0.14em] text-[#888888]">{presenceCopy.eyebrow}</p>
           </Fade>
-          <h2 className="mt-4 font-sans text-[clamp(2.2rem,4vw,3.5rem)] font-medium leading-[0.98] tracking-[-0.04em] text-[#0A0A0A]">
+          <h2 className="mt-4 font-sans text-[clamp(2.2rem,4vw,3.5rem)] font-medium leading-[0.98] tracking-[-0.04em] text-[#3C3C3C]">
             <MaskLine>60+ countries.</MaskLine>
             <MaskLine delay={0.08}>
-              <span className="font-extralight text-[#9A9A9A]">One trading desk.</span>
+              <span className="font-extralight text-[#888888]">One trading desk.</span>
             </MaskLine>
           </h2>
           <Fade delay={0.15}>
-            <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-[#6B6B6B]">{presenceCopy.intro}</p>
+            <p className="mt-5 max-w-sm text-[14px] leading-relaxed text-[#5A5A5A]">{presenceCopy.intro}</p>
           </Fade>
 
-          <div role="group" aria-label="Filter by region" className="mt-7 border-t border-[#D6D6D6]">
+          <div role="group" aria-label="Filter by region" className="mt-7 border-t border-[#D8DAD9]">
             {[{ region: "All" as Filter, list: countries }, ...byRegion].map((r) => {
               const on = filter === r.region;
               return (
@@ -75,19 +75,19 @@ export default function Presence() {
                   type="button"
                   aria-pressed={on}
                   onClick={() => setFilter(on && r.region !== "All" ? "All" : r.region)}
-                  className={`flex w-full items-baseline justify-between border-b border-[#D6D6D6] px-3 py-2.5 text-left transition-colors ${
-                    on ? "bg-[#0A0A0A] text-[#fff]" : "text-[#0A0A0A] hover:bg-[#fff]"
+                  className={`flex w-full items-baseline justify-between border-b border-[#D8DAD9] px-3 py-2.5 text-left transition-colors ${
+                    on ? "bg-accord-red text-[#fff]" : "text-[#3C3C3C] hover:bg-[#fff]"
                   }`}
                 >
                   <span className="text-[14px] font-medium">{r.region === "All" ? "All regions" : r.region}</span>
-                  <span className="font-sans text-[24px] font-light leading-none tracking-[-0.03em] tabular-nums text-accord-red">
+                  <span className={`font-sans text-[24px] font-light leading-none tracking-[-0.03em] tabular-nums ${on ? "text-[#fff]" : "text-accord-red"}`}>
                     {String(r.list.length).padStart(2, "0")}
                   </span>
                 </button>
               );
             })}
           </div>
-          <p className="mt-3 text-[11px] text-[#8A8A8A]">Select a region or a country. Headquarters: {HQ.name}.</p>
+          <p className="mt-3 text-[11px] text-[#888888]">Select a region or a country. Headquarters: {HQ.name}.</p>
         </div>
 
         {/* Right: map + country list */}
@@ -148,10 +148,10 @@ export default function Presence() {
                   <span
                     className={`block rounded-full ring-2 ring-[#fff] transition-all duration-200 ${
                       isHover
-                        ? "h-3 w-3 bg-[#0A0A0A]"
+                        ? "h-3 w-3 bg-[#3C3C3C]"
                         : inFilter
                           ? "h-2 w-2 bg-accord-red group-hover:h-3 group-hover:w-3"
-                          : "h-1.5 w-1.5 bg-[#BDBDBD]"
+                          : "h-1.5 w-1.5 bg-[#C4C6C5]"
                     }`}
                   />
                 </button>
@@ -160,8 +160,8 @@ export default function Presence() {
 
             {/* HQ */}
             <span className="pointer-events-none absolute z-30" style={{ left: `${mapPoints.hq.x}%`, top: `${mapPoints.hq.y}%` }}>
-              <span className="absolute -left-[6px] -top-[6px] h-3 w-3 rounded-full bg-[#0A0A0A] ring-2 ring-[#fff]" />
-              <span className="absolute -left-[13px] -top-[13px] h-[26px] w-[26px] animate-ping rounded-full border border-[#0A0A0A]/50" />
+              <span className="absolute -left-[6px] -top-[6px] h-3 w-3 rounded-full bg-[#3C3C3C] ring-2 ring-[#fff]" />
+              <span className="absolute -left-[13px] -top-[13px] h-[26px] w-[26px] animate-ping rounded-full border border-[#3C3C3C]/50" />
             </span>
 
             {/* Tooltip */}
@@ -173,7 +173,7 @@ export default function Presence() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.15 }}
-                  className="pointer-events-none absolute z-40 -translate-x-1/2 whitespace-nowrap bg-[#0A0A0A] px-2.5 py-1.5 text-[11px] font-medium text-[#fff]"
+                  className="pointer-events-none absolute z-40 -translate-x-1/2 whitespace-nowrap bg-[#3C3C3C] px-2.5 py-1.5 text-[11px] font-medium text-[#fff]"
                   style={{ left: `${PTS[hovered.iso3].x}%`, top: `calc(${PTS[hovered.iso3].y}% - 36px)` }}
                 >
                   {hovered.name}
@@ -184,8 +184,8 @@ export default function Presence() {
           </div>
 
           {/* Country list (linked to the markers) */}
-          <div className="mt-6 border-t border-[#D6D6D6] pt-4">
-            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-[#8A8A8A]">
+          <div className="mt-6 border-t border-[#D8DAD9] pt-4">
+            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-[#888888]">
               {filter === "All" ? "All countries" : filter} · {shown.length}
             </p>
             <ul className="mt-3 flex flex-wrap gap-1.5">
@@ -198,8 +198,8 @@ export default function Presence() {
                     onClick={() => setHover((h) => (h === c.iso3 ? null : c.iso3))}
                     className={`border px-2.5 py-1 text-[12px] transition-colors ${
                       hover === c.iso3
-                        ? "border-[#0A0A0A] bg-[#0A0A0A] text-[#fff]"
-                        : "border-[#D6D6D6] bg-[#fff] text-[#3A3A3A] hover:border-[#0A0A0A]"
+                        ? "border-accord-red bg-accord-red text-[#fff]"
+                        : "border-[#D8DAD9] bg-[#fff] text-[#3C3C3C] hover:border-[#3C3C3C]"
                     }`}
                   >
                     {c.name}

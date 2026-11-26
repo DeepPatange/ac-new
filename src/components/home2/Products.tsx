@@ -12,19 +12,19 @@ export default function Products() {
       <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
         <Fade className="lg:col-span-4">
           <Square />
-          <p className="mt-5 max-w-[300px] text-[14px] font-medium leading-snug text-[#0A0A0A]">
+          <p className="mt-5 max-w-[300px] text-[14px] font-medium leading-snug text-[#3C3C3C]">
             {productsIntro}
           </p>
           <Link
             href={R.products}
-            className="mt-3 inline-block text-[12px] text-[#8A8A8A] underline decoration-[#C8C8C8] underline-offset-4 transition-colors hover:text-[#0A0A0A]"
+            className="mt-3 inline-block text-[12px] text-[#888888] underline decoration-[#C4C6C5] underline-offset-4 transition-colors hover:text-[#3C3C3C]"
           >
             All products
           </Link>
         </Fade>
-        <h2 className="font-sans text-[clamp(2.6rem,7vw,6.5rem)] font-medium uppercase leading-[0.9] tracking-[-0.045em] text-[#0A0A0A] lg:col-span-8 lg:text-right">
+        <h2 className="font-sans text-[clamp(2.6rem,7vw,6.5rem)] font-medium uppercase leading-[0.9] tracking-[-0.045em] text-[#3C3C3C] lg:col-span-8 lg:text-right">
           <MaskLine>
-            Eight <span className="font-extralight text-[#A3A3A3]">product</span>
+            Eight <span className="font-extralight text-[#888888]">product</span>
           </MaskLine>
           <MaskLine delay={0.08}>
             <span className="text-accord-red">families</span>
@@ -42,13 +42,13 @@ export default function Products() {
                   href={enquire(p.slug)}
                   className={`group flex h-full flex-col p-5 sm:min-h-[240px] sm:p-6 transition-colors duration-300 ${
                     custom
-                      ? "bg-accord-red text-[#fff] hover:bg-[#0A0A0A]"
-                      : "bg-[#F3F3F3] text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-[#fff]"
+                      ? "bg-accord-red text-[#fff] hover:bg-accord-redDark"
+                      : "bg-[#EFF1F0] text-[#3C3C3C] hover:bg-accord-red hover:text-[#fff]"
                   }`}
                 >
                   <span
                     className={`text-[11px] font-medium tabular-nums ${
-                      custom ? "text-[#fff]/75" : "text-[#8A8A8A] group-hover:text-[#fff]/60"
+                      custom ? "text-[#fff]/75" : "text-[#888888] group-hover:text-[#fff]/60"
                     }`}
                   >
                     Family {String(i + 1).padStart(2, "0")}
@@ -61,14 +61,14 @@ export default function Products() {
                     className={`mt-6 border-t pt-4 text-[13px] leading-relaxed ${
                       custom
                         ? "border-[#fff]/30 text-[#fff]/85"
-                        : "border-[#DADADA] text-[#6B6B6B] group-hover:border-[#fff]/20 group-hover:text-[#fff]/70"
+                        : "border-[#D8DAD9] text-[#6D6D6D] group-hover:border-[#fff]/20 group-hover:text-[#fff]/70"
                     }`}
                   >
                     {p.desc}
                   </span>
                   <span
                     className={`mt-4 inline-flex items-center gap-1.5 text-[12px] font-medium ${
-                      custom ? "text-[#fff]" : "text-accord-red"
+                      custom ? "text-[#fff]" : "text-accord-red group-hover:text-[#fff]"
                     }`}
                   >
                     {custom ? "Send a specification" : "Enquire"}

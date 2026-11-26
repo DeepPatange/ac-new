@@ -73,18 +73,18 @@ export default function Scene() {
             <Square red />
             <h2
               id="scene-heading"
-              className="mt-5 font-sans text-[clamp(1.9rem,3.4vw,3rem)] font-medium uppercase leading-[0.92] tracking-[-0.04em] text-[#0A0A0A]"
+              className="mt-5 font-sans text-[clamp(1.9rem,3.4vw,3rem)] font-medium uppercase leading-[0.92] tracking-[-0.04em] text-[#3C3C3C]"
             >
               <MaskLine>
-                Six <span className="font-extralight text-[#A3A3A3]">source</span> ports.
+                Six <span className="font-extralight text-[#888888]">source</span> ports.
               </MaskLine>
               <MaskLine delay={0.08}>
                 <span className="text-accord-red">One desk.</span>
               </MaskLine>
             </h2>
-            <ol className="mt-6 grid grid-cols-3 gap-x-4 gap-y-3 border-t border-[#E6E6E6] pt-4 sm:grid-cols-6">
+            <ol className="mt-6 grid grid-cols-3 gap-x-4 gap-y-3 border-t border-[#E0E2E1] pt-4 sm:grid-cols-6">
               {LEGS.map((l, i) => (
-                <li key={l} className="text-[12px] leading-snug text-[#5E5E5E]">
+                <li key={l} className="text-[12px] leading-snug text-[#5A5A5A]">
                   <span className="block text-[11px] font-medium tabular-nums text-accord-red">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -94,7 +94,7 @@ export default function Scene() {
             </ol>
             <Link
               href={R.services}
-              className="mt-6 inline-block text-[12px] font-medium text-[#0A0A0A] underline decoration-[#C8C8C8] underline-offset-4 hover:decoration-[#0A0A0A]"
+              className="mt-6 inline-block text-[12px] font-medium text-[#3C3C3C] underline decoration-[#C4C6C5] underline-offset-4 hover:decoration-accord-red"
             >
               Our port and logistics network
             </Link>

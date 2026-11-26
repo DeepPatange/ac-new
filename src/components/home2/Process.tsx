@@ -21,7 +21,7 @@ export default function Process() {
           <MaskLine>{processCopy.eyebrow}</MaskLine>
         </h2>
         <Fade>
-          <p className="max-w-sm text-[14px] leading-relaxed text-[#6B6B6B] sm:text-right">
+          <p className="max-w-sm text-[14px] leading-relaxed text-[#5A5A5A] sm:text-right">
             {processCopy.heading}: four stages, one accountable team.
           </p>
         </Fade>
@@ -35,7 +35,7 @@ export default function Process() {
             <li
               key={s.step}
               className={`relative flex flex-col lg:px-6 ${
-                i > 0 ? "lg:border-l lg:border-dashed lg:border-[#BDBDBD]" : "lg:pl-0"
+                i > 0 ? "lg:border-l lg:border-dashed lg:border-[#C4C6C5]" : "lg:pl-0"
               }`}
             >
               <Fade delay={i * 0.08}>
@@ -47,10 +47,10 @@ export default function Process() {
                     Step {s.step}
                   </span>
                 </div>
-                <h3 className="mt-4 font-sans text-[14px] font-semibold uppercase tracking-[0.03em] text-[#0A0A0A]">
+                <h3 className="mt-4 font-sans text-[14px] font-semibold uppercase tracking-[0.03em] text-[#3C3C3C]">
                   {s.title}
                 </h3>
-                <p className="mt-2 max-w-[280px] text-[13px] leading-relaxed text-[#4A4A4A]">
+                <p className="mt-2 max-w-[280px] text-[13px] leading-relaxed text-[#3C3C3C]">
                   {s.desc}
                 </p>
               </Fade>
@@ -60,7 +60,7 @@ export default function Process() {
                 <span className="block font-sans text-[clamp(10rem,15vw,15rem)] font-semibold leading-[0.8] tracking-[-0.06em] text-accord-red">
                   {i + 1}
                 </span>
-                <span className="ml-2 mt-3 text-[13px] font-medium text-[#0A0A0A]">{SHORT[i]}</span>
+                <span className="ml-2 mt-3 text-[13px] font-medium text-[#3C3C3C]">{SHORT[i]}</span>
               </div>
             </li>
           ))}

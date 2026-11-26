@@ -27,13 +27,13 @@ export default function Industries() {
   return (
     <section id="industries" className="py-12 lg:py-20">
       <div className={`${WRAP} text-center`}>
-        <h2 className="font-sans text-[clamp(2.6rem,7vw,6.5rem)] font-medium uppercase leading-[0.9] tracking-[-0.045em] text-[#0A0A0A]">
+        <h2 className="font-sans text-[clamp(2.6rem,7vw,6.5rem)] font-medium uppercase leading-[0.9] tracking-[-0.045em] text-[#3C3C3C]">
           <MaskLine>
             Industries <span className="text-accord-red">we serve</span>
           </MaskLine>
         </h2>
         <Fade>
-          <p className="mx-auto mt-6 max-w-lg text-[14px] leading-relaxed text-[#6B6B6B]">
+          <p className="mx-auto mt-6 max-w-lg text-[14px] leading-relaxed text-[#5A5A5A]">
             {industriesIntro}
           </p>
         </Fade>
@@ -45,7 +45,7 @@ export default function Industries() {
             <li key={f.name} className="w-[62vw] shrink-0 snap-start sm:w-[38vw] lg:w-auto lg:flex-1">
               <Fade delay={i * 0.06}>
                 <Link href={R.industries} className="group block">
-                  <div className={`relative h-[360px] overflow-hidden bg-[#D9D9D9] ${f.h}`}>
+                  <div className={`relative h-[360px] overflow-hidden bg-[#D8DAD9] ${f.h}`}>
                     <Image
                       src={portrait(f.id)}
                       alt={`${f.name} industry`}
@@ -60,7 +60,7 @@ export default function Industries() {
                       }`}
                     />
                   </div>
-                  <p className="mt-3 text-center text-[12px] font-medium uppercase tracking-[0.06em] text-[#0A0A0A] transition-colors group-hover:text-accord-red">
+                  <p className="mt-3 text-center text-[12px] font-medium uppercase tracking-[0.06em] text-[#3C3C3C] transition-colors group-hover:text-accord-red">
                     {f.name}
                   </p>
                 </Link>
@@ -71,9 +71,9 @@ export default function Industries() {
       </div>
 
       <Fade className={`${WRAP} mt-10 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-center sm:gap-8`}>
-        <p className="text-[13px] text-[#6B6B6B]">
+        <p className="text-[13px] text-[#6D6D6D]">
           Also serving{" "}
-          <span className="text-[#0A0A0A]">{rest.join(" · ")}</span>
+          <span className="text-[#3C3C3C]">{rest.join(" · ")}</span>
         </p>
         <Link
           href={R.industries}

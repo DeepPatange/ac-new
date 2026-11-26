@@ -7,7 +7,7 @@ import Flow from "./Flow";
 /* Logistical presence: heading + the ports → hub → warehouses flow. */
 export default function Presence() {
   return (
-    <section aria-label="Logistical presence" className="border-t border-[#E6E6E6]">
+    <section aria-label="Logistical presence" className="border-t border-[#E0E2E1]">
       <div className={`${WRAP} py-12 lg:py-20`}>
         <SplitHeading
           red

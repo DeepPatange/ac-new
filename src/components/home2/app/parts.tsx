@@ -30,9 +30,9 @@ export function StoreButtons({ tone = "dark" }: { tone?: "dark" | "light" }) {
     "inline-flex h-14 items-center gap-3 px-5 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accord-red focus-visible:ring-offset-2";
   const skin =
     tone === "dark"
-      ? "bg-[#0A0A0A] text-[#fff] hover:bg-accord-red"
-      : "bg-[#fff] text-[#0A0A0A] hover:bg-accord-red hover:text-[#fff]";
-  const sub = tone === "dark" ? "text-[#fff]/65" : "text-[#6B6B6B]";
+      ? "bg-accord-red text-[#fff] hover:bg-accord-redDark"
+      : "bg-[#fff] text-[#3C3C3C] hover:bg-accord-red hover:text-[#fff]";
+  const sub = tone === "dark" ? "text-[#fff]/65" : "text-[#6D6D6D]";
   return (
     <div className="flex flex-wrap items-center gap-3">
       <a
@@ -80,11 +80,11 @@ export function PhoneFrame({
   sizes?: string;
 }) {
   return (
-    <div className="relative aspect-[9/19.5] overflow-hidden rounded-[2.2rem] border border-[#000]/50 bg-[#141418] p-2 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.55)]">
+    <div className="relative aspect-[9/19.5] overflow-hidden rounded-[2.2rem] border border-[#D8DAD9] bg-[#EFF1F0] p-2 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.25)]">
       <div className="relative h-full w-full overflow-hidden rounded-[1.7rem]">
         <Image src={src} alt="" fill sizes={sizes} className="object-cover object-top" priority={priority} />
       </div>
-      <span aria-hidden className="absolute left-1/2 top-2 h-4 w-24 -translate-x-1/2 rounded-b-xl bg-[#141418]" />
+      <span aria-hidden className="absolute left-1/2 top-2 h-4 w-24 -translate-x-1/2 rounded-b-xl bg-[#3C3C3C]" />
     </div>
   );
 }

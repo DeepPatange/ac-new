@@ -23,21 +23,21 @@ export default function FamilyIndex() {
         ]}
       />
 
-      <ol className="mt-12 border-t border-[#E6E6E6] lg:mt-16">
+      <ol className="mt-12 border-t border-[#E0E2E1] lg:mt-16">
         {indexed.map((p, i) => (
           <li key={p.slug}>
             <Link
               href={enquire(p.slug)}
               aria-label={`${cta.enquire}: ${p.name}`}
-              className="group relative grid grid-cols-12 items-center gap-x-4 gap-y-2 border-b border-[#E6E6E6] py-6 lg:py-8"
+              className="group relative grid grid-cols-12 items-center gap-x-4 gap-y-2 border-b border-[#E0E2E1] py-6 lg:py-8"
             >
               <span className="col-span-3 font-sans text-[clamp(2rem,4vw,3.5rem)] font-extralight leading-none tracking-[-0.04em] tabular-nums text-accord-red sm:col-span-2">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="col-span-9 font-sans text-[clamp(1.1rem,2.1vw,1.85rem)] font-medium uppercase leading-tight tracking-[-0.025em] text-[#0A0A0A] transition-transform duration-500 group-hover:translate-x-2 sm:col-span-5">
+              <span className="col-span-9 font-sans text-[clamp(1.1rem,2.1vw,1.85rem)] font-medium uppercase leading-tight tracking-[-0.025em] text-[#3C3C3C] transition-transform duration-500 group-hover:translate-x-2 sm:col-span-5">
                 {p.name}
               </span>
-              <span className="col-span-9 col-start-4 text-[13px] leading-relaxed text-[#7A7A7A] sm:col-span-3 sm:col-start-auto">
+              <span className="col-span-9 col-start-4 text-[13px] leading-relaxed text-[#6D6D6D] sm:col-span-3 sm:col-start-auto">
                 {p.desc}
               </span>
               <span className="col-span-9 col-start-4 inline-flex items-center gap-1.5 text-[13px] font-medium text-accord-red sm:col-span-2 sm:col-start-auto sm:justify-end">
@@ -74,7 +74,7 @@ export default function FamilyIndex() {
           <div className="lg:col-span-4 lg:flex lg:justify-end">
             <Link
               href={enquire(last.slug)}
-              className="inline-flex h-12 items-center gap-2 bg-[#0A0A0A] px-6 text-[14px] font-medium text-[#fff] transition-colors hover:bg-[#fff] hover:text-[#0A0A0A]"
+              className="inline-flex h-12 items-center gap-2 bg-accord-red px-6 text-[14px] font-medium text-[#fff] transition-colors hover:bg-accord-redDark "
             >
               {cta.enquire}
               <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
@@ -85,14 +85,14 @@ export default function FamilyIndex() {
 
       {/* Ledger meta: count, the client's PDF slot, and the primary CTA */}
       <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-        <Label className="text-[#0A0A0A]">{count} families</Label>
+        <Label className="text-[#3C3C3C]">{count} families</Label>
         {/* CLIENT-INPUT slot: renders only when site.ts provides the file. */}
         {productListPdf ? (
           <a
             href={productListPdf}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[13px] font-medium text-[#0A0A0A] underline decoration-[#C8C8C8] underline-offset-4 hover:decoration-accord-red"
+            className="inline-flex items-center gap-2 text-[13px] font-medium text-[#3C3C3C] underline decoration-[#C4C6C5] underline-offset-4 hover:decoration-accord-red"
           >
             <FileDown className="h-4 w-4" strokeWidth={1.75} aria-hidden />
             Download product list (PDF)

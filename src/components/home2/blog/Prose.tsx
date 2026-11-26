@@ -16,7 +16,7 @@ export function Inline({ text, invert = false }: { text: string; invert?: boolea
         const bold = part.match(/^\*\*(.+)\*\*$/);
         if (bold) {
           return (
-            <strong key={i} className={`font-semibold ${invert ? "text-[#fff]" : "text-[#0A0A0A]"}`}>
+            <strong key={i} className={`font-semibold ${invert ? "text-[#fff]" : "text-[#3C3C3C]"}`}>
               {bold[1]}
             </strong>
           );
@@ -50,8 +50,8 @@ function Cell({ children, head }: { children: ReactNode; head?: boolean }) {
       scope={head ? "col" : undefined}
       className={
         head
-          ? "border-b border-[#0A0A0A] px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.14em] text-[#6B6B6B]"
-          : "border-b border-[#E6E6E6] px-4 py-3 align-top text-[15px] leading-relaxed text-[#2B2B2B]"
+          ? "border-b border-[#3C3C3C] px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.14em] text-[#6D6D6D]"
+          : "border-b border-[#E0E2E1] px-4 py-3 align-top text-[15px] leading-relaxed text-[#3C3C3C]"
       }
     >
       {children}
@@ -73,7 +73,7 @@ export default function Prose({ blocks }: { blocks: Block[] }) {
               <h2
                 key={i}
                 id={slugify(b.text)}
-                className="scroll-mt-28 border-t border-[#E6E6E6] pt-10 font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-medium leading-[1.15] tracking-[-0.025em] text-[#0A0A0A] first:border-t-0 first:pt-0"
+                className="scroll-mt-28 border-t border-[#E0E2E1] pt-10 font-sans text-[clamp(1.5rem,2.4vw,2rem)] font-medium leading-[1.15] tracking-[-0.025em] text-[#3C3C3C] first:border-t-0 first:pt-0"
               >
                 <span className="mb-3 block text-[13px] font-light tabular-nums tracking-normal text-accord-red">
                   {two(h2Index)}
@@ -87,20 +87,20 @@ export default function Prose({ blocks }: { blocks: Block[] }) {
               <h3
                 key={i}
                 id={slugify(b.text)}
-                className="scroll-mt-28 pt-2 font-sans text-[19px] font-semibold leading-snug tracking-[-0.01em] text-[#0A0A0A]"
+                className="scroll-mt-28 pt-2 font-sans text-[19px] font-semibold leading-snug tracking-[-0.01em] text-[#3C3C3C]"
               >
                 {b.text}
               </h3>
             );
           case "p":
             return (
-              <p key={i} className="text-[17px] leading-[1.75] text-[#2B2B2B]">
+              <p key={i} className="text-[17px] leading-[1.75] text-[#3C3C3C]">
                 <Inline text={b.text} />
               </p>
             );
           case "ul":
             return (
-              <ul key={i} className="space-y-3 text-[17px] leading-[1.7] text-[#2B2B2B]">
+              <ul key={i} className="space-y-3 text-[17px] leading-[1.7] text-[#3C3C3C]">
                 {b.items.map((it, j) => (
                   <li key={j} className="flex gap-4">
                     <span aria-hidden className="mt-[0.6em] h-1.5 w-1.5 shrink-0 bg-accord-red" />
@@ -113,9 +113,9 @@ export default function Prose({ blocks }: { blocks: Block[] }) {
             );
           case "ol":
             return (
-              <ol key={i} className="border-t border-[#E6E6E6] text-[17px] leading-[1.7] text-[#2B2B2B]">
+              <ol key={i} className="border-t border-[#E0E2E1] text-[17px] leading-[1.7] text-[#3C3C3C]">
                 {b.items.map((it, j) => (
-                  <li key={j} className="grid grid-cols-[2.75rem_1fr] gap-2 border-b border-[#E6E6E6] py-4">
+                  <li key={j} className="grid grid-cols-[2.75rem_1fr] gap-2 border-b border-[#E0E2E1] py-4">
                     <span className="font-sans text-[22px] font-extralight leading-[1.2] tabular-nums text-accord-red">
                       {two(j + 1)}
                     </span>
@@ -146,7 +146,7 @@ export default function Prose({ blocks }: { blocks: Block[] }) {
                           {r.map((c, k) => (
                             <Cell key={k}>
                               {k === 0 ? (
-                                <span className="font-medium text-[#0A0A0A]">
+                                <span className="font-medium text-[#3C3C3C]">
                                   <Inline text={c} />
                                 </span>
                               ) : (
@@ -160,15 +160,15 @@ export default function Prose({ blocks }: { blocks: Block[] }) {
                   </table>
                 </div>
                 {b.caption && (
-                  <figcaption className="mt-3 text-[13px] text-[#8A8A8A]">{b.caption}</figcaption>
+                  <figcaption className="mt-3 text-[13px] text-[#888888]">{b.caption}</figcaption>
                 )}
               </figure>
             );
           case "callout":
             return (
-              <aside key={i} className="border-l-[3px] border-accord-red bg-[#F3F3F3] p-6 sm:p-7">
-                <p className="font-sans text-[16px] font-semibold text-[#0A0A0A]">{b.title}</p>
-                <p className="mt-2 text-[16px] leading-relaxed text-[#2B2B2B]">
+              <aside key={i} className="border-l-[3px] border-accord-red bg-[#EFF1F0] p-6 sm:p-7">
+                <p className="font-sans text-[16px] font-semibold text-[#3C3C3C]">{b.title}</p>
+                <p className="mt-2 text-[16px] leading-relaxed text-[#3C3C3C]">
                   <Inline text={b.text} />
                 </p>
               </aside>
@@ -176,7 +176,7 @@ export default function Prose({ blocks }: { blocks: Block[] }) {
           case "figure":
             return (
               <figure key={i} className="my-2">
-                <div className="relative aspect-[16/9] overflow-hidden bg-[#D9D9D9]">
+                <div className="relative aspect-[16/9] overflow-hidden bg-[#D8DAD9]">
                   <Image
                     src={b.src}
                     alt={b.alt}
@@ -187,7 +187,7 @@ export default function Prose({ blocks }: { blocks: Block[] }) {
                   <span aria-hidden className="absolute bottom-0 left-0 h-[22%] w-[18%] bg-accord-red mix-blend-multiply" />
                 </div>
                 {b.caption && (
-                  <figcaption className="mt-3 text-[13px] text-[#8A8A8A]">{b.caption}</figcaption>
+                  <figcaption className="mt-3 text-[13px] text-[#888888]">{b.caption}</figcaption>
                 )}
               </figure>
             );

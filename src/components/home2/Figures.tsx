@@ -43,7 +43,7 @@ export default function Figures() {
       className="relative overflow-hidden"
       style={{
         background:
-          "linear-gradient(180deg, #E11B22 0%, #E11B22 20%, #EA6A6E 40%, #F4D3D4 58%, #F3F3F3 74%, #F3F3F3 100%)",
+          "linear-gradient(180deg, #E11B22 0%, #E11B22 20%, #EA6A6E 40%, #F4D3D4 58%, #EFF1F0 74%, #EFF1F0 100%)",
       }}
     >
       <div className={`${WRAP} pt-16 lg:pt-20`}>
@@ -76,10 +76,10 @@ export default function Figures() {
             <div key={p.value} className="border-l-2 border-accord-red pl-3">
               <dt className="sr-only">{p.label.join(" ")}</dt>
               <dd>
-                <span className="block font-sans text-[clamp(2rem,7vw,2.75rem)] font-medium leading-none tracking-[-0.04em] tabular-nums text-[#0A0A0A]">
+                <span className="block font-sans text-[clamp(2rem,7vw,2.75rem)] font-medium leading-none tracking-[-0.04em] tabular-nums text-[#3C3C3C]">
                   {p.value}
                 </span>
-                <span className="mt-2 block text-[12px] font-medium leading-tight text-[#2B2B2B]">
+                <span className="mt-2 block text-[12px] font-medium leading-tight text-[#3C3C3C]">
                   {p.label[0]} {p.label[1]}
                 </span>
               </dd>
@@ -116,10 +116,10 @@ export default function Figures() {
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 0.8, ease: easeOut, delay: 0.1 + i * 0.08 }}
               >
-                <span className="font-sans text-[clamp(2.5rem,4.2vw,4rem)] font-medium leading-[0.85] tracking-[-0.045em] tabular-nums text-[#0A0A0A]">
+                <span className="font-sans text-[clamp(2.5rem,4.2vw,4rem)] font-medium leading-[0.85] tracking-[-0.045em] tabular-nums text-[#3C3C3C]">
                   {p.value}
                 </span>
-                <span aria-hidden className="pt-1 text-[12px] font-medium leading-[1.2] text-[#1A1A1A]">
+                <span aria-hidden className="pt-1 text-[12px] font-medium leading-[1.2] text-[#3C3C3C]">
                   {p.label[0]}
                   <br />
                   {p.label[1]}
@@ -153,8 +153,8 @@ export default function Figures() {
         />
       </div>
 
-      <div className="bg-[#F3F3F3]">
-        <p className={`${WRAP} py-5 text-[11px] leading-relaxed text-[#6B6B6B]`}>{statsNote}</p>
+      <div className="bg-[#EFF1F0]">
+        <p className={`${WRAP} py-5 text-[11px] leading-relaxed text-[#5A5A5A]`}>{statsNote}</p>
       </div>
     </section>
   );

@@ -9,7 +9,7 @@ import { PORTS, WAREHOUSES } from "./data";
    Phone: a stacked ledger. Square, flat Swiss nodes; Inter labels. */
 
 const RED = "#E11B22";
-const INK = "#0A0A0A";
+const INK = "#3C3C3C";
 const FONT = "var(--font-sans), system-ui, sans-serif";
 
 function Node({
@@ -153,11 +153,11 @@ function Diagram() {
 
 function Stacked() {
   const List = ({ title, items }: { title: string; items: string[] }) => (
-    <div className="bg-[#F3F3F3] p-5">
+    <div className="bg-[#EFF1F0] p-5">
       <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-accord-red">{title}</p>
       <ol className="mt-3 grid grid-cols-2 gap-x-4">
         {items.map((it, i) => (
-          <li key={it} className="flex items-baseline gap-2 border-b border-[#DADADA] py-2 text-[14px] font-medium text-[#0A0A0A]">
+          <li key={it} className="flex items-baseline gap-2 border-b border-[#D8DAD9] py-2 text-[14px] font-medium text-[#3C3C3C]">
             <span className="text-[11px] tabular-nums text-accord-red">{String(i + 1).padStart(2, "0")}</span>
             {it}
           </li>

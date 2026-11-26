@@ -114,7 +114,7 @@ export function Square({ red = false }: { red?: boolean }) {
   return (
     <span
       aria-hidden
-      className={`block h-2.5 w-2.5 ${red ? "bg-accord-red" : "bg-[#0A0A0A]"}`}
+      className={`block h-2.5 w-2.5 ${red ? "bg-accord-red" : "bg-[#3C3C3C]"}`}
     />
   );
 }

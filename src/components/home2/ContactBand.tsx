@@ -26,7 +26,7 @@ export default function ContactBand() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href={R.contact}
-                className="inline-flex h-12 items-center bg-[#0A0A0A] px-6 text-[14px] font-medium text-[#fff] transition-colors hover:bg-[#fff] hover:text-[#0A0A0A]"
+                className="inline-flex h-12 items-center bg-[#fff] px-6 text-[14px] font-medium text-accord-red transition-colors hover:bg-[#EFF1F0]"
               >
                 Request a quote
               </Link>
